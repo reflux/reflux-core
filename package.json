@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./test/**/*.spec.*",
-	"lint":"eslint ./src",
-	"watch":"onchange './src' './test' -- npm test",
+    "lint": "eslint ./src",
+    "watch": "onchange './src' './test' -- npm test",
     "benchmark": "node test/benchmarks",
     "build": "browserify ./src/*"
   },
@@ -33,12 +33,12 @@
     "babel-eslint": "^3.1.9",
     "babelify": "^6.1.2",
     "benchmark": "^1.0.0",
-    "browserify": "^10.2.3",
-    "chai": "^1.9.1",
-    "chai-as-promised": "^4.1.1",
+    "browserify": "~10.2.3",
+    "chai": "^2.3.0",
+    "chai-as-promised": "^5.0.0",
     "eslint": "^0.22.1",
     "matchdep": "^0.3.0",
-    "mocha": "^1.21.3",
+    "mocha": "~2.2.5",
     "onchange": "^1.1.0",
     "q": "^1.0.1",
     "sinon": "^1.10.3"
