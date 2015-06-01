@@ -9,7 +9,7 @@ var _ = require('./utils'),
  */
 var mapChildListenables = function(listenable) {
     var i = 0, children = {}, childName;
-    for (;i < (listenable.children||[]).length; ++i) {
+    for (; i < (listenable.children || []).length; ++i) {
         childName = listenable.children[i];
         if(listenable[childName]){
             children[childName] = listenable[childName];
@@ -57,7 +57,7 @@ module.exports = {
      */
     hasListener: function(listenable) {
         var i = 0, j, listener, listenables;
-        for (;i < (this.subscriptions||[]).length; ++i) {
+        for (; i < (this.subscriptions || []).length; ++i) {
             listenables = [].concat(this.subscriptions[i].listenable);
             for (j = 0; j < listenables.length; j++){
                 listener = listenables[j];
@@ -80,7 +80,11 @@ module.exports = {
             var cbname = _.callbackName(key),
                 localname = this[cbname] ? cbname : this[key] ? key : undefined;
             if (localname){
-                this.listenTo(allListenables[key],localname,this[cbname+"Default"]||this[localname+"Default"]||localname);
+				this.listenTo(
+					allListenables[key], localname, this[cbname+"Default"] ||
+					this[localname+"Default"] ||
+					localname
+				);
             }
         }
     },
@@ -117,7 +121,7 @@ module.exports = {
         var desub, unsubscriber, subscriptionobj, subs = this.subscriptions = this.subscriptions || [];
         _.throwIf(this.validateListening(listenable));
         this.fetchInitialState(listenable, defaultCallback);
-        desub = listenable.listen(this[callback]||callback, this);
+        desub = listenable.listen(this[callback] || callback, this);
         unsubscriber = function() {
             var index = subs.indexOf(subscriptionobj);
             _.throwIf(index === -1,'Tried to remove listen already gone from subscriptions list!');
