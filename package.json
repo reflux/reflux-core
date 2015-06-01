@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./test/**/*.spec.*",
+	"lint":"eslint ./src",
+	"watch":"onchange './src' './test' -- npm test",
     "benchmark": "node test/benchmarks",
     "build": "browserify ./src/*"
   },
@@ -37,6 +39,7 @@
     "eslint": "^0.22.1",
     "matchdep": "^0.3.0",
     "mocha": "^1.21.3",
+    "onchange": "^1.1.0",
     "q": "^1.0.1",
     "sinon": "^1.10.3"
   }
