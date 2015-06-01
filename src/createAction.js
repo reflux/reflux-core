@@ -1,7 +1,7 @@
-var _ = require('./utils'),
-    Reflux = require('./index'),
-    Keep = require('./Keep'),
-    allowed = {preEmit:1,shouldEmit:1};
+var utils = require('./utils');
+var Reflux = require('./index');
+var Keep = require('./Keep');
+var allowed = {preEmit:1,shouldEmit:1};
 
 /**
  * Creates an action functor object. It is mixed in with functions
@@ -13,7 +13,7 @@ var _ = require('./utils'),
 var createAction = function(definition) {
 
     definition = definition || {};
-    if (!_.isObject(definition)){
+    if (!utils.isObject(definition)){
         definition = {actionName: definition};
     }
 
@@ -44,9 +44,9 @@ var createAction = function(definition) {
         childActions[name] = createAction(name);
     }
 
-    var context = _.extend({
+    var context = utils.extend({
         eventLabel: "action",
-        emitter: new _.EventEmitter(),
+        emitter: new utils.EventEmitter(),
         _isAction: true
     }, Reflux.PublisherMethods, Reflux.ActionMethods, definition);
 
@@ -54,7 +54,7 @@ var createAction = function(definition) {
         return functor[functor.sync?"trigger":"triggerPromise"].apply(functor, arguments);
     };
 
-    _.extend(functor,childActions,context);
+    utils.extend(functor,childActions,context);
 
     Keep.createdActions.push(functor);
 
