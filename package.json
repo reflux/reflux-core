@@ -4,12 +4,13 @@
   "description": "A simple library for uni-directional dataflow application architecture inspired by ReactJS Flux",
   "main": "index.js",
   "scripts": {
-	"pretest":"npm run lint",
+    "pretest": "npm run lint",
     "test": "mocha ./test/**/*.spec.*",
+	"docgen":"docco ./src/*.js",
     "lint": "eslint ./src",
     "watch": "onchange './src' './test' -- npm test",
     "benchmark": "node test/benchmarks",
-    "build": "browserify ./src/*"
+    "build": "browserify ./src/* && npm run docgen"
   },
   "browserify": {
     "transform": [
@@ -37,6 +38,7 @@
     "browserify": "~10.2.3",
     "chai": "^2.3.0",
     "chai-as-promised": "^5.0.0",
+    "docco": "^0.7.0",
     "eslint": "^0.22.1",
     "matchdep": "^0.3.0",
     "mocha": "~2.2.5",
