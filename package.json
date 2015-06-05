@@ -6,7 +6,7 @@
   "scripts": {
     "pretest": "npm run lint",
     "test": "mocha ./test/**/*.spec.*",
-	"docgen":"docco ./src/*.js",
+    "docgen": "docco ./src/*.js",
     "lint": "eslint ./src",
     "watch": "onchange './src' './test' -- npm test",
     "benchmark": "node test/benchmarks",
@@ -29,7 +29,8 @@
   ],
   "dependencies": {
     "eventemitter3": "^0.1.2",
-    "native-promise-only": "^0.7.6-a"
+    "native-promise-only": "^0.7.6-a",
+    "rx": "^2.5.3"
   },
   "devDependencies": {
     "babel-eslint": "^3.1.9",

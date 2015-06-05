@@ -1,9 +1,9 @@
-var _ = require('./utils'),
-    Reflux = require('./index'),
-    Keep = require('./Keep'),
-    mixer = require('./mixer'),
-    allowed = {preEmit:1,shouldEmit:1},
-    bindMethods = require('./bindMethods');
+var utils = require('./utils');
+var Reflux = require('./index');
+var Keep = require('./Keep');
+var mixer = require('./mixer');
+var allowed = {preEmit:1,shouldEmit:1};
+var bindMethods = require('./bindMethods');
 
 /**
  * Creates an event emitting Data Store. It is mixed in with functions
@@ -38,10 +38,10 @@ module.exports = function(definition) {
     function Store() {
         var i=0, arr;
         this.subscriptions = [];
-        this.emitter = new _.EventEmitter();
+        this.emitter = new utils.EventEmitter();
         this.eventLabel = "change";
         bindMethods(this, definition);
-        if (this.init && _.isFunction(this.init)) {
+        if (this.init && utils.isFunction(this.init)) {
             this.init();
         }
         if (this.listenables){
@@ -52,7 +52,7 @@ module.exports = function(definition) {
         }
     }
 
-    _.extend(Store.prototype, Reflux.ListenerMethods, Reflux.PublisherMethods, Reflux.StoreMethods, definition);
+    utils.extend(Store.prototype, Reflux.ListenerMethods, Reflux.PublisherMethods, Reflux.StoreMethods, definition);
 
     var store = new Store();
     Keep.createdStores.push(store);

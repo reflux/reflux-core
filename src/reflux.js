@@ -1,0 +1,1 @@
+exports.store = require('./stores');
