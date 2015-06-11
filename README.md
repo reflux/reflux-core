@@ -52,3 +52,13 @@ Initially, we'll be using RxJS behind the scenes to achieve these results. [What
 
 [//]: Links
 [what-is-RxJS]:  https://github.com/Reactive-Extensions/RxJS/blob/master/doc/gettingstarted/what.md 
+[npm-image]: http://img.shields.io/npm/v/reflux.svg
+[downloads-image]: http://img.shields.io/npm/dm/reflux.svg
+[dependencies-image]: http://img.shields.io/david/spoike/refluxjs.svg
+[npm-url]: https://www.npmjs.org/package/reflux
+[bower-image]: http://img.shields.io/bower/v/reflux.svg
+[bower-url]: http://bower.io/search/?q=reflux
+[travis-image]: http://img.shields.io/travis/spoike/refluxjs/master.svg
+[travis-url]: https://travis-ci.org/spoike/refluxjs
+[gratipay-image]: http://img.shields.io/gratipay/spoike.svg
+[gratipay-url]: https://gratipay.com/spoike/
