@@ -24,14 +24,7 @@ Please only use the [issue tracker](https://github.com/spoike/refluxjs/issues) f
 ## Content
 
 - [The Reactive Approach](#the-reactive-approach)
-- [Examples](#examples)
-- [Installation](#installation)
-- [Usage](#usage)
-     - [Actions](#creating-actions)
-     - [Stores](#creating-data-stores)
-     - [Component](#react-component-example)
-- [Advanced Usage](#advanced-usage)
-- [Colophon](#colophon)
+ - [Other Important Changes Coming](#other-changes)
 
 *** 
 
@@ -47,7 +40,7 @@ Starting in v0.3.0 Reflux will fully implement the Reactive approach. This chang
 
 Initially, we'll be using RxJS behind the scenes to achieve these results. [What is RxJS?][what-is-RxJS]
 
-### Other Changes
+### Other Changes Coming with v0.3.x
 
 - Removal of React integration at the core of Reflux
 - A more approachable api for integration of both framework components, and your choice of view handling
