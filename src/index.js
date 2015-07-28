@@ -10,17 +10,6 @@ exports.createAction = require('./createAction');
 
 exports.createStore = require('./createStore');
 
-exports.connect = require('./connect');
-
-exports.connectFilter = require('./connectFilter');
-
-exports.ListenerMixin = require('./ListenerMixin');
-
-exports.listenTo = require('./listenTo');
-
-exports.listenToMany = require('./listenToMany');
-
-
 var maker = require('./joins').staticJoinCreator;
 
 exports.joinTrailing = exports.all = maker("last"); // Reflux.all alias for backward compatibility

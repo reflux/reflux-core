@@ -51,7 +51,7 @@ module.exports = function(grunt) {
           reporters: ['saucelabs', 'dots'],
           sauceLabs: {
             "public": "team",
-            testName: 'RefluxJS Karma Tests (Dev)',
+            testName: 'RefluxJS Core Karma Tests (Dev)',
             recordVideo: false,
             recordScreenshot: false,
             tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
           reporters: ['saucelabs', 'dots'],
           sauceLabs: {
             "public": "public",
-            testName: 'RefluxJS Karma Tests (Travis)',
+            testName: 'RefluxJS Core Karma Tests (Travis)',
             recordVideo: false,
             recordScreenshot: false,
             startConnect: false,

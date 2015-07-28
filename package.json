@@ -1,6 +1,6 @@
 {
-  "name": "reflux",
-  "version": "0.2.11",
+  "name": "reflux-core",
+  "version": "0.2.0",
   "description": "A simple library for uni-directional dataflow application architecture inspired by ReactJS Flux",
   "main": "index.js",
   "scripts": {
@@ -12,11 +12,13 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "http://github.com/spoike/refluxjs.git"
+    "url": "http://github.com/reflux/refluxjs-core.git"
   },
   "keywords": [
+    "reflux",
     "react",
-    "flux"
+    "flux",
+    "architecture"
   ],
   "dependencies": {
     "eventemitter3": "^1.1.1"
@@ -45,8 +47,5 @@
     "mocha": "latest",
     "q": "^1.0.1",
     "sinon": "^1.10.3"
-  },
-  "peerDependencies": {
-    "react": ">=0.12.2 <0.14.0"
   }
 }
