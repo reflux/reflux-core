@@ -16,9 +16,9 @@
   },
   "keywords": [
     "reflux",
-    "react",
     "flux",
-    "architecture"
+    "architecture",
+    "dataflow"
   ],
   "dependencies": {
     "eventemitter3": "^1.1.1"
