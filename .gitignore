@@ -21,6 +21,7 @@ node_modules
 
 # Additional tools
 .idea
+.env
 
 # Build artifacts
 tmp

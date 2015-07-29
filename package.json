@@ -2,11 +2,16 @@
   "name": "reflux-core",
   "version": "0.2.0-rc",
   "description": "A simple library for uni-directional dataflow application architecture inspired by ReactJS Flux",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "grunt test",
+    "test:mocha": "mocha",
+    "test:karma": "karma start test/config/karma.conf.js",
+    "test:travis": "karma start test/config/karma-travis.conf.js",
+    "test": "npm run lint && npm run test:mocha && npm run test:karma",
+    "lint": "jshint src/ test/",
     "benchmark": "node test/benchmarks",
-    "build": "grunt build"
+    "watch:src": "watch 'npm run test' src/",
+    "watch": "parallelshell 'npm run watch:src'"
   },
   "author": "Mikael Brassman",
   "license": "BSD-3-Clause",
@@ -32,13 +37,7 @@
     "chai": "latest",
     "chai-as-promised": "latest",
     "es6-promise": "^2.3.0",
-    "grunt": "^0.4.5",
-    "grunt-browserify": "3.8.0",
-    "grunt-contrib-jshint": "^0.11.2",
-    "grunt-contrib-uglify": "^0.5.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-karma": "latest",
-    "grunt-mocha-test": "~0.12.7",
+    "jshint": "latest",
     "karma": "latest",
     "karma-browserify": "latest",
     "karma-commonjs": "latest",
@@ -46,9 +45,10 @@
     "karma-phantomjs-launcher": "latest",
     "karma-sauce-launcher": "latest",
     "karma-spec-reporter": "latest",
-    "matchdep": "^0.3.0",
     "mocha": "latest",
+    "parallelshell": "latest",
     "q": "^1.0.1",
-    "sinon": "^1.10.3"
+    "sinon": "^1.10.3",
+    "watch": "latest"
   }
 }

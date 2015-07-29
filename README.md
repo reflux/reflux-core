@@ -5,24 +5,32 @@ A simple core library for unidirectional dataflow architecture inspired by [Flux
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][npm-url]
 [![Dependencies][dependencies-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
+<!-- [![Build Status][travis-image]][travis-url] -->
 [![Gratipay][gratipay-image]][gratipay-url]
 
 For an overview of reflux with react extensions, look at the [refluxjs repository][refluxjs-url].
 
 ## Installation
 
-You can currently install the package as a npm package.
+You can currently install the package as an npm package.
 
 ### NPM
 
-The following command installs `reflux-core` as a npm package:
+The following command installs `reflux-core` as an npm package:
 
     npm install reflux-core
 
 ### ES5
 
 Like React, Reflux depends on an es5-shim for older browsers. The es5-shim.js from [kriskowal's es5-shim](https://github.com/kriskowal/es5-shim) provides everything required.
+
+## Development
+
+You need to have NodeJS installed. After cloning this repository and running `npm install` you can run the following scripts:
+
+* `npm test` To run the jshint and tests
+
+* `npm run benchmark` To run the benchmark test
 
 ## Colophon
 

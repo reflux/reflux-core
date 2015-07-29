@@ -9,7 +9,7 @@ before_install:
   - npm install -g grunt-cli
 
 script:
-  - grunt travis
+  - npm run test:travis
 
 env:
   global:

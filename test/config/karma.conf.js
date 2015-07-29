@@ -7,19 +7,21 @@ module.exports = function(config) {
         singleRun : true,
         autoWatch : false,
 
+        browsers: ['PhantomJS'],
+
         frameworks: [
             'mocha',
             'browserify'
         ],
 
         files: [
-            'test/shims/phantomjs-shims.js',
-            'test/*.spec.js'
+            '../shims/phantomjs-shims.js',
+            '../*.spec.js'
         ],
 
         preprocessors: {
-            'test/shims/phantomjs-shims.js': ['browserify'],
-            'test/*.spec.js': ['browserify']
+            '../shims/phantomjs-shims.js': ['browserify'],
+            '../*.spec.js': ['browserify']
         },
 
         browserify: {
