@@ -9,27 +9,25 @@
     "docgen": "docco ./src/*.js",
     "lint": "eslint ./src",
     "watch": "onchange './src' './test' -- npm test",
-    "benchmark": "node test/benchmarks",
-    "build": "browserify ./src/* && npm run docgen"
+    "benchmark": "node test/benchmarks"
   },
   "browserify": {
     "transform": [
       "babelify"
     ]
   },
-  "author": "Mikael Brassman",
+  "author": "Mikael Brassman (https://github.com/spoike)",
+  "contributors":["Brian Vanderbusch (https://github.com/LongLiveCHIEF) <brian@hackerhappyhour.com>"],
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "http://github.com/spoike/reflux.git"
+    "url": "https://github.com/spoike/reflux.git"
   },
   "keywords": [
     "react",
     "flux"
   ],
   "dependencies": {
-    "eventemitter3": "^0.1.2",
-    "native-promise-only": "^0.7.6-a",
     "rx": "^2.5.3"
   },
   "devDependencies": {
@@ -41,10 +39,7 @@
     "chai-as-promised": "^5.0.0",
     "docco": "^0.7.0",
     "eslint": "^0.22.1",
-    "matchdep": "^0.3.0",
     "mocha": "~2.2.5",
-    "onchange": "^1.1.0",
-    "q": "^1.0.1",
     "sinon": "^1.10.3"
   }
 }
