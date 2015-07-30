@@ -17,7 +17,10 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "http://github.com/reflux/refluxjs-core.git"
+    "url": "https://github.com/reflux/refluxjs-core.git"
+  },
+  "bugs": {
+    "url": "http://github.com/reflux/refluxjs-core/issues"
   },
   "keywords": [
     "reflux",
