@@ -5,7 +5,7 @@ A simple core library for unidirectional dataflow architecture inspired by [Flux
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][npm-url]
 [![Dependencies][dependencies-image]][npm-url]
-<!-- [![Build Status][travis-image]][travis-url] -->
+[![Build Status][travis-image]][travis-url]
 [![Gratipay][gratipay-image]][gratipay-url]
 
 For an overview of reflux with react extensions, look at the [refluxjs repository][refluxjs-url].
@@ -30,6 +30,8 @@ You need to have NodeJS installed. After cloning this repository and running `np
 
 * `npm test` To run the jshint and tests
 
+* `npm run watch` To run the watch task. It will lint and test the code whenever a file is saved.
+
 * `npm run benchmark` To run the benchmark test
 
 ## Colophon
@@ -46,8 +48,8 @@ This project uses [eventemitter3](https://github.com/3rd-Eden/EventEmitter3), is
 [downloads-image]: http://img.shields.io/npm/dm/reflux-core.svg
 [dependencies-image]: http://img.shields.io/david/reflux/reflux-core.svg
 [npm-url]: https://www.npmjs.org/package/reflux-core
-[travis-image]: http://img.shields.io/travis/spoike/reflux-core/master.svg
-[travis-url]: https://travis-ci.org/spoike/reflux-core
+[travis-image]: http://img.shields.io/travis/reflux/reflux-core/master.svg
+[travis-url]: https://travis-ci.org/reflux/reflux-core
 [gratipay-image]: http://img.shields.io/gratipay/spoike.svg
 [gratipay-url]: https://gratipay.com/spoike/
 [refluxjs-url]: https://github.com/reflux/refluxjs#refluxjs
