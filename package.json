@@ -10,7 +10,7 @@
     "test": "npm run lint && npm run test:mocha && npm run test:karma",
     "lint": "jshint src/ test/",
     "benchmark": "node test/benchmarks",
-    "watch:src": "watch 'npm run test' src/",
+    "watch:src": "watch 'npm run test' src/ test/",
     "watch": "parallelshell 'npm run watch:src'"
   },
   "author": "Mikael Brassman",
