@@ -8,6 +8,8 @@ A simple core library for unidirectional dataflow architecture inspired by [Flux
 [![Build Status][travis-image]][travis-url]
 [![Gratipay][gratipay-image]][gratipay-url]
 
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/reflux-core.svg)](https://saucelabs.com/u/reflux-core)
+
 For an overview of reflux with react extensions, look at the [refluxjs repository][refluxjs-url].
 
 ## Installation
