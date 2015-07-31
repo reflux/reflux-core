@@ -48,19 +48,6 @@
     "rx": "^2.5.3"
   },
   "devDependencies": {
-    "babel-eslint": "^3.1.9",
-    "babelify": "^6.1.2",
-    "benchmark": "^1.0.0",
-    "browserify": "~10.2.3",
-    "chai": "^2.3.0",
-    "chai-as-promised": "^5.0.0",
-    "docco": "^0.7.0",
-    "eslint": "^0.22.1",
-    "mocha": "~2.2.5",
-    "sinon": "^1.10.3",
-    "eventemitter3": "^1.1.1"
-  },
-  "devDependencies": {
     "babel": "^5.8.19",
     "babel-eslint": "^4.0.5",
     "benchmark": "^1.0.0",
