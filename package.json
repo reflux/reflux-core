@@ -4,14 +4,9 @@
   "description": "A simple library for uni-directional dataflow application architecture inspired by ReactJS Flux",
   "main": "lib/index.js",
   "scripts": {
-<<<<<<< HEAD
     "pretest": "npm run lint",
     "test": "mocha ./test/**/*.spec.*",
     "docgen": "docco ./src/*.js",
-    "lint": "eslint ./src",
-    "watch": "onchange './src' './test' -- npm test",
-    "benchmark": "node test/benchmarks"
-=======
     "test:mocha": "mocha",
     "test:karma": "karma start test/config/karma.conf.js",
     "test:travis": "karma start test/config/karma-travis.conf.js",
@@ -25,7 +20,6 @@
     "watch:test": "watch 'npm run lint:test && npm run test' test/",
     "watch:src": "watch 'npm run build' src/",
     "watch": "parallelshell 'npm run watch:src' 'npm run watch:test'"
->>>>>>> master
   },
   "browserify": {
     "transform": [
@@ -37,14 +31,10 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-<<<<<<< HEAD
-    "url": "https://github.com/spoike/reflux.git"
-=======
     "url": "https://github.com/reflux/reflux-core.git"
   },
   "bugs": {
     "url": "http://github.com/reflux/reflux-core/issues"
->>>>>>> master
   },
   "keywords": [
     "reflux",
@@ -56,7 +46,6 @@
     "data"
   ],
   "dependencies": {
-<<<<<<< HEAD
     "rx": "^2.5.3"
   },
   "devDependencies": {
@@ -69,8 +58,7 @@
     "docco": "^0.7.0",
     "eslint": "^0.22.1",
     "mocha": "~2.2.5",
-    "sinon": "^1.10.3"
-=======
+    "sinon": "^1.10.3",
     "eventemitter3": "^1.1.1"
   },
   "devDependencies": {
@@ -95,6 +83,5 @@
     "q": "^1.0.1",
     "sinon": "^1.10.3",
     "watch": "latest"
->>>>>>> master
   }
 }
