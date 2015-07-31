@@ -1,8 +1,9 @@
-var _ = require('./utils'),
-    ActionMethods = require('./ActionMethods'),
-    PublisherMethods = require('./PublisherMethods'),
-    Keep = require('./Keep'),
-    allowed = {preEmit:1,shouldEmit:1};
+var _ = require("./utils"),
+    ActionMethods = require("./ActionMethods"),
+    PublisherMethods = require("./PublisherMethods"),
+    Keep = require("./Keep");
+
+var allowed = { preEmit: 1, shouldEmit: 1 };
 
 /**
  * Creates an action functor object. It is mixed in with functions
@@ -36,7 +37,7 @@ var createAction = function(definition) {
 
     definition.children = definition.children || [];
     if (definition.asyncResult){
-        definition.children = definition.children.concat(["completed","failed"]);
+        definition.children = definition.children.concat(["completed", "failed"]);
     }
 
     var i = 0, childActions = {};
@@ -57,7 +58,7 @@ var createAction = function(definition) {
         return functor[triggerType].apply(functor, arguments);
     };
 
-    _.extend(functor,childActions,context);
+    _.extend(functor, childActions, context);
 
     Keep.createdActions.push(functor);
 

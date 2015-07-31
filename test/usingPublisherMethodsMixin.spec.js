@@ -1,6 +1,6 @@
 var chai = require('chai'),
     assert = chai.assert,
-    Reflux = require('../src'),
+    Reflux = require('../lib'),
     Q = require('q'),
     sinon = require('sinon'),
     util = require('util');

@@ -1,7 +1,7 @@
 var chai = require('chai'),
     assert = chai.assert,
-    Reflux = require('../src'),
-    utils = require('../src/utils');
+    Reflux = require('../lib'),
+    utils = require('../lib/utils');
 
 var MockPromise = function(resolver) {
     this.catches = [];

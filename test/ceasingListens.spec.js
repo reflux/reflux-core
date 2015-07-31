@@ -1,5 +1,5 @@
 var assert = require('chai').assert,
-    Reflux = require('../src'),
+    Reflux = require('../lib'),
     Action = Reflux.createAction,
     Store = Reflux.createStore,
     fn = function(){},

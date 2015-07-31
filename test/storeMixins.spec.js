@@ -1,6 +1,6 @@
 var chai = require('chai'),
     assert = chai.assert,
-    Reflux = require('../src'),
+    Reflux = require('../lib'),
     sinon = require('sinon');
 
 describe('Creating stores with mixins', function () {

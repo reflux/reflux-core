@@ -1,8 +1,9 @@
-var _ = require('./utils'),
-    Keep = require('./Keep'),
-    mixer = require('./mixer'),
-    allowed = {preEmit:1,shouldEmit:1},
-    bindMethods = require('./bindMethods');
+var _ = require("./utils"),
+    Keep = require("./Keep"),
+    mixer = require("./mixer"),
+    bindMethods = require("./bindMethods");
+
+var allowed = { preEmit: 1, shouldEmit: 1 };
 
 /**
  * Creates an event emitting Data Store. It is mixed in with functions
@@ -14,9 +15,9 @@ var _ = require('./utils'),
  */
 module.exports = function(definition) {
 
-    var StoreMethods = require('./StoreMethods'),
-        PublisherMethods = require('./PublisherMethods'),
-        ListenerMethods = require('./ListenerMethods');
+    var StoreMethods = require("./StoreMethods"),
+        PublisherMethods = require("./PublisherMethods"),
+        ListenerMethods = require("./ListenerMethods");
 
     definition = definition || {};
 
@@ -39,7 +40,7 @@ module.exports = function(definition) {
     definition = mixer(definition);
 
     function Store() {
-        var i=0, arr;
+        var i = 0, arr;
         this.subscriptions = [];
         this.emitter = new _.EventEmitter();
         this.eventLabel = "change";
@@ -49,7 +50,7 @@ module.exports = function(definition) {
         }
         if (this.listenables){
             arr = [].concat(this.listenables);
-            for(;i < arr.length;i++){
+            for(; i < arr.length; i++){
                 this.listenToMany(arr[i]);
             }
         }

@@ -1,25 +1,27 @@
-exports.capitalize = function(string){
-    return string.charAt(0).toUpperCase()+string.slice(1);
-};
+export function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
-exports.callbackName = function(string, prefix){
+export function callbackName(string, prefix) {
     prefix = prefix || "on";
     return prefix + exports.capitalize(string);
-};
+}
 
-var env = exports.environment = {};
+export var environment = {};
 
 function checkEnv(target) {
-    var flag = false;
+    let flag;
     try {
-        if (eval(target)) { // jshint ignore:line
+        /*eslint-disable no-eval */
+        if (eval(target)) {
             flag = true;
         }
+        /*eslint-enable no-eval */
     }
     catch (e) {
-        /* no-op */
+        flag = false;
     }
-    env[exports.callbackName(target, "has")] = flag;
+    environment[callbackName(target, "has")] = flag;
 }
 checkEnv("setImmediate");
 checkEnv("Promise");
@@ -28,12 +30,12 @@ checkEnv("Promise");
  * isObject, extend, isFunction, isArguments are taken from undescore/lodash in
  * order to remove the dependency
  */
-var isObject = exports.isObject = function(obj) {
-    var type = typeof obj;
-    return type === 'function' || type === 'object' && !!obj;
-};
+export function isObject(obj) {
+    const type = typeof obj;
+    return type === "function" || type === "object" && !!obj;
+}
 
-exports.extend = function(obj) {
+export function extend(obj) {
     if (!isObject(obj)) {
         return obj;
     }
@@ -50,15 +52,15 @@ exports.extend = function(obj) {
         }
     }
     return obj;
-};
+}
 
-exports.isFunction = function(value) {
-    return typeof value === 'function';
-};
+export function isFunction(value) {
+    return typeof value === "function";
+}
 
-exports.EventEmitter = require('eventemitter3');
+exports.EventEmitter = require("eventemitter3");
 
-if (env.hasSetImmediate) {
+if (environment.hasSetImmediate) {
     exports.nextTick = function(callback) {
         setImmediate(callback);
     };
@@ -68,17 +70,17 @@ if (env.hasSetImmediate) {
     };
 }
 
-exports.object = function(keys,vals){
-    var o={}, i=0;
+export function object(keys, vals){
+    var o = {}, i = 0;
     for(;i < keys.length; i++){
         o[keys[i]] = vals[i];
     }
     return o;
-};
+}
 
-if (env.hasPromise) {
+if (environment.hasPromise) {
     exports.Promise = Promise;
-    exports.createPromise = function(resolver) {
+    exports.createPromise = function (resolver) {
         return new exports.Promise(resolver);
     };
 } else {
@@ -86,12 +88,12 @@ if (env.hasPromise) {
     exports.createPromise = function() {};
 }
 
-exports.isArguments = function(value) {
-    return typeof value === 'object' && ('callee' in value) && typeof value.length === 'number';
-};
+export function isArguments(value) {
+    return typeof value === "object" && ("callee" in value) && typeof value.length === "number";
+}
 
-exports.throwIf = function(val,msg){
+export function throwIf(val, msg){
     if (val){
-        throw Error(msg||val);
+        throw Error(msg || val);
     }
-};
+}
