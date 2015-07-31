@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
 	"parser": "babel-eslint",
 	"env":{
 		"browser":true,
@@ -30,15 +29,3 @@
 		"generators":true
 	}
 }
-
-=======
-    "parser": "babel-eslint",
-    "env": {
-        "node": true
-    },
-    "rules": {
-        "strict": 0,
-        "no-use-before-define": 0
-    }
-}
->>>>>>> master
