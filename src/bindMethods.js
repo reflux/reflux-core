@@ -3,7 +3,7 @@ module.exports = function(store, definition) {
     if (Object.getOwnPropertyDescriptor && Object.defineProperty) {
         var propertyDescriptor = Object.getOwnPropertyDescriptor(definition, name);
 
-        if (!propertyDescriptor.value || typeof propertyDescriptor.value !== 'function' || !definition.hasOwnProperty(name)) {
+        if (!propertyDescriptor.value || typeof propertyDescriptor.value !== "function" || !definition.hasOwnProperty(name)) {
             continue;
         }
 
@@ -11,7 +11,7 @@ module.exports = function(store, definition) {
     } else {
         var property = definition[name];
 
-        if (typeof property !== 'function' || !definition.hasOwnProperty(name)) {
+        if (typeof property !== "function" || !definition.hasOwnProperty(name)) {
             continue;
         }
 

@@ -1,6 +1,6 @@
 var chai = require('chai'),
     assert = chai.assert,
-    Reflux = require('../src'),
+    Reflux = require('../lib'),
     Q = require('q'),
     sinon = require('sinon'),
     util = require('util');
@@ -350,7 +350,7 @@ describe("using the publisher methods mixin",function(){
 
             var promise = pub.triggerPromise.call(context);
 
-            assert(promise instanceof Promise);
+            assert.isFulfilled(promise);
         });
 
         it("should resolve when completed",function(){

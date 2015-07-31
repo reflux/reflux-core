@@ -1,7 +1,7 @@
 var chai = require('chai'),
     assert = chai.assert,
-    Reflux = require('../src'),
-    internalUtils = require('../src/utils');
+    Reflux = require('../lib'),
+    internalUtils = require('../lib/utils');
 
 chai.use(require('chai-as-promised'));
 

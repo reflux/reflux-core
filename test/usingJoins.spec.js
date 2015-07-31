@@ -1,5 +1,5 @@
 var assert = require('chai').assert,
-    Reflux = require('../src'),
+    Reflux = require('../lib'),
     sinon = require('sinon');
 
 describe('using joins',function(){
@@ -89,7 +89,7 @@ describe('using joins',function(){
                     assert.equal(spy.callCount,1);
                     assert.deepEqual(spy.firstCall.args,[['a'],['b'],['c']]);
                     done();
-                }, 10);
+                }, 50);
             });
 
             it("should throw error if triggered more than once",function(){
@@ -226,11 +226,15 @@ describe('using joins',function(){
                 });
             });
         });
+        describe('with more than 1 participant in the join', function() {
+            it('should not throw', function() {
+                assert.doesNotThrow(function(){
+                    Reflux.createStore().joinConcat(Reflux.createAction(), function(){});
+                });
+            });
+        });
         describe('with less than 2 participants in the join',function(){
             it('should fail',function(){
-                assert.throws(function(){
-                    Reflux.createStore().joinConcat(Reflux.createAction(),function(){});
-                });
                 assert.throws(function(){
                     Reflux.createStore().joinConcat(function(){});
                 });

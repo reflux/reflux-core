@@ -1,4 +1,4 @@
-var Reflux = require('../src'),
+var Reflux = require('../lib'),
     sinon = require('sinon'),
     assert = require('chai').assert;
 

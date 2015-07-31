@@ -21,7 +21,9 @@ node_modules
 
 # Additional tools
 .idea
+.env
 
 # Build artifacts
 tmp
 bower_components
+lib

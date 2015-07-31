@@ -1,6 +1,6 @@
 var chai = require('chai'),
     assert = chai.assert,
-    Reflux = require('../src');
+    Reflux = require('../lib');
 
 describe('with the keep reset', function() {
     beforeEach(function () {

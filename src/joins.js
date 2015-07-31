@@ -2,9 +2,10 @@
  * Internal module used to create static and instance join methods
  */
 
+var createStore = require("./createStore"),
+    _ = require("./utils");
+
 var slice = Array.prototype.slice,
-    _ = require("./utils"),
-    createStore = require("./createStore"),
     strategyMethodNames = {
         strict: "joinStrict",
         first: "joinLeading",
@@ -22,7 +23,7 @@ exports.staticJoinCreator = function(strategy){
         var listenables = slice.call(arguments);
         return createStore({
             init: function(){
-                this[strategyMethodNames[strategy]].apply(this,listenables.concat("triggerAsync"));
+                this[strategyMethodNames[strategy]].apply(this, listenables.concat("triggerAsync"));
             }
         });
     };
@@ -35,13 +36,13 @@ exports.staticJoinCreator = function(strategy){
  */
 exports.instanceJoinCreator = function(strategy){
     return function(/* listenables..., callback*/){
-        _.throwIf(arguments.length < 3,'Cannot create a join with less than 2 listenables!');
+        _.throwIf(arguments.length < 2, "Cannot create a join with less than 2 listenables!");
         var listenables = slice.call(arguments),
             callback = listenables.pop(),
             numberOfListenables = listenables.length,
             join = {
                 numberOfListenables: numberOfListenables,
-                callback: this[callback]||callback,
+                callback: this[callback] || callback,
                 listener: this,
                 strategy: strategy
             }, i, cancels = [], subobj;
@@ -49,11 +50,11 @@ exports.instanceJoinCreator = function(strategy){
             _.throwIf(this.validateListening(listenables[i]));
         }
         for (i = 0; i < numberOfListenables; i++) {
-            cancels.push(listenables[i].listen(newListener(i,join),this));
+            cancels.push(listenables[i].listen(newListener(i, join), this));
         }
         reset(join);
         subobj = {listenable: listenables};
-        subobj.stop = makeStopper(subobj,cancels,this);
+        subobj.stop = makeStopper(subobj, cancels, this);
         this.subscriptions = (this.subscriptions || []).concat(subobj);
         return subobj;
     };
@@ -61,12 +62,12 @@ exports.instanceJoinCreator = function(strategy){
 
 // ---- internal join functions ----
 
-function makeStopper(subobj,cancels,context){
+function makeStopper(subobj, cancels, context){
     return function() {
         var i, subs = context.subscriptions,
             index = (subs ? subs.indexOf(subobj) : -1);
-        _.throwIf(index === -1,'Tried to remove join already gone from subscriptions list!');
-        for(i=0;i < cancels.length; i++){
+        _.throwIf(index === -1, "Tried to remove join already gone from subscriptions list!");
+        for(i = 0; i < cancels.length; i++){
             cancels[i]();
         }
         subs.splice(index, 1);
@@ -78,7 +79,7 @@ function reset(join) {
     join.args = new Array(join.numberOfListenables);
 }
 
-function newListener(i,join) {
+function newListener(i, join) {
     return function() {
         var callargs = slice.call(arguments);
         if (join.listenablesEmitted[i]){
@@ -89,7 +90,7 @@ function newListener(i,join) {
             }
         } else {
             join.listenablesEmitted[i] = true;
-            join.args[i] = (join.strategy==="all"?[callargs]:callargs);
+            join.args[i] = (join.strategy === "all" ? [callargs] : callargs);
         }
         emitIfAllListenablesEmitted(join);
     };
@@ -101,6 +102,6 @@ function emitIfAllListenablesEmitted(join) {
             return;
         }
     }
-    join.callback.apply(join.listener,join.args);
+    join.callback.apply(join.listener, join.args);
     reset(join);
 }

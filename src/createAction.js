@@ -1,7 +1,9 @@
-var utils = require('./utils');
-var Reflux = require('./index');
-var Keep = require('./Keep');
-var allowed = {preEmit:1,shouldEmit:1};
+var _ = require("./utils"),
+    ActionMethods = require("./ActionMethods"),
+    PublisherMethods = require("./PublisherMethods"),
+    Keep = require("./Keep");
+
+var allowed = { preEmit: 1, shouldEmit: 1 };
 
 /**
  * Creates an action functor object. It is mixed in with functions
@@ -17,8 +19,8 @@ var createAction = function(definition) {
         definition = {actionName: definition};
     }
 
-    for(var a in Reflux.ActionMethods){
-        if (!allowed[a] && Reflux.PublisherMethods[a]) {
+    for(var a in ActionMethods){
+        if (!allowed[a] && PublisherMethods[a]) {
             throw new Error("Cannot override API method " + a +
                 " in Reflux.ActionMethods. Use another method name or override it on Reflux.PublisherMethods instead."
             );
@@ -26,7 +28,7 @@ var createAction = function(definition) {
     }
 
     for(var d in definition){
-        if (!allowed[d] && Reflux.PublisherMethods[d]) {
+        if (!allowed[d] && PublisherMethods[d]) {
             throw new Error("Cannot override API method " + d +
                 " in action creation. Use another method name or override it on Reflux.PublisherMethods instead."
             );
@@ -35,7 +37,7 @@ var createAction = function(definition) {
 
     definition.children = definition.children || [];
     if (definition.asyncResult){
-        definition.children = definition.children.concat(["completed","failed"]);
+        definition.children = definition.children.concat(["completed", "failed"]);
     }
 
     var i = 0, childActions = {};
@@ -48,13 +50,15 @@ var createAction = function(definition) {
         eventLabel: "action",
         emitter: new utils.EventEmitter(),
         _isAction: true
-    }, Reflux.PublisherMethods, Reflux.ActionMethods, definition);
+    }, PublisherMethods, ActionMethods, definition);
 
     var functor = function() {
-        return functor[functor.sync?"trigger":"triggerPromise"].apply(functor, arguments);
+        var triggerType = functor.sync ? "trigger" :
+            ( _.environment.hasPromise ? "triggerPromise" : "triggerAsync" );
+        return functor[triggerType].apply(functor, arguments);
     };
 
-    utils.extend(functor,childActions,context);
+    _.extend(functor, childActions, context);
 
     Keep.createdActions.push(functor);
 

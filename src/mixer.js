@@ -1,4 +1,4 @@
-var _ = require('./utils');
+var _ = require("./utils");
 
 module.exports = function mix(def) {
     var composed = {

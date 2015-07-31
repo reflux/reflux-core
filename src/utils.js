@@ -1,13 +1,41 @@
+export function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export function callbackName(string, prefix) {
+    prefix = prefix || "on";
+    return prefix + exports.capitalize(string);
+}
+
+export var environment = {};
+
+function checkEnv(target) {
+    let flag;
+    try {
+        /*eslint-disable no-eval */
+        if (eval(target)) {
+            flag = true;
+        }
+        /*eslint-enable no-eval */
+    }
+    catch (e) {
+        flag = false;
+    }
+    environment[callbackName(target, "has")] = flag;
+}
+checkEnv("setImmediate");
+checkEnv("Promise");
+
 /*
  * isObject, extend, isFunction, isArguments are taken from undescore/lodash in
  * order to remove the dependency
  */
-var isObject = exports.isObject = function(obj) {
-    var type = typeof obj;
-    return type === 'function' || type === 'object' && !!obj;
-};
+export function isObject(obj) {
+    const type = typeof obj;
+    return type === "function" || type === "object" && !!obj;
+}
 
-exports.extend = function(obj) {
+export function extend(obj) {
     if (!isObject(obj)) {
         return obj;
     }
@@ -24,25 +52,23 @@ exports.extend = function(obj) {
         }
     }
     return obj;
-};
+}
 
-exports.isFunction = function(value) {
-    return typeof value === 'function';
-};
+export function isFunction(value) {
+    return typeof value === "function";
+}
 
-exports.EventEmitter = require('eventemitter3');
+exports.EventEmitter = require("eventemitter3");
 
-exports.nextTick = function(callback) {
-    setTimeout(callback, 0);
-};
-
-exports.capitalize = function(string){
-    return string.charAt(0).toUpperCase()+string.slice(1);
-};
-
-exports.callbackName = function(string){
-    return "on"+exports.capitalize(string);
-};
+if (environment.hasSetImmediate) {
+    exports.nextTick = function(callback) {
+        setImmediate(callback);
+    };
+} else {
+    exports.nextTick = function(callback) {
+        setTimeout(callback, 0);
+    };
+}
 
 exports.object = function(keys,vals){
     var o={}, i=0;
@@ -52,18 +78,22 @@ exports.object = function(keys,vals){
     return o;
 };
 
-exports.Promise = require("native-promise-only");
+if (environment.hasPromise) {
+    exports.Promise = Promise;
+    exports.createPromise = function (resolver) {
+        return new exports.Promise(resolver);
+    };
+} else {
+    exports.Promise = null;
+    exports.createPromise = function() {};
+}
 
-exports.createPromise = function(resolver) {
-    return new exports.Promise(resolver);
-};
+export function isArguments(value) {
+    return typeof value === "object" && ("callee" in value) && typeof value.length === "number";
+}
 
-exports.isArguments = function(value) {
-    return typeof value === 'object' && ('callee' in value) && typeof value.length === 'number';
-};
-
-exports.throwIf = function(val,msg){
+export function throwIf(val, msg){
     if (val){
-        throw Error(msg||val);
+        throw Error(msg || val);
     }
-};
+}

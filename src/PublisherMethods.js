@@ -1,4 +1,4 @@
-var _ = require('./utils');
+var _ = require("./utils");
 
 /**
  * A module of methods for object that you want to be able to listen to.
@@ -61,11 +61,11 @@ module.exports = {
         var me = this;
 
         var canHandlePromise =
-            this.children.indexOf('completed') >= 0 &&
-            this.children.indexOf('failed') >= 0;
+            this.children.indexOf("completed") >= 0 &&
+            this.children.indexOf("failed") >= 0;
 
         if (!canHandlePromise){
-            throw new Error('Publisher must have "completed" and "failed" child publishers');
+            throw new Error("Publisher must have \"completed\" and \"failed\" child publishers");
         }
 
         promise.then(function(response) {
@@ -89,7 +89,7 @@ module.exports = {
         var removeListen = this.listen(function() {
 
             if (!callback) {
-                throw new Error('Expected a function returning a promise but got ' + callback);
+                throw new Error("Expected a function returning a promise but got " + callback);
             }
 
             var args = arguments,
@@ -120,7 +120,7 @@ module.exports = {
      * Tries to publish the event on the next tick
      */
     triggerAsync: function(){
-        var args = arguments,me = this;
+        var args = arguments, me = this;
         _.nextTick(function() {
             me.trigger.apply(me, args);
         });
@@ -140,19 +140,19 @@ module.exports = {
         var args = arguments;
 
         var canHandlePromise =
-            this.children.indexOf('completed') >= 0 &&
-            this.children.indexOf('failed') >= 0;
+            this.children.indexOf("completed") >= 0 &&
+            this.children.indexOf("failed") >= 0;
 
         var promise = _.createPromise(function(resolve, reject) {
             // If `listenAndPromise` is listening
             // patch `promise` w/ context-loaded resolve/reject
             if (me.willCallPromise) {
                 _.nextTick(function() {
-                    var old_promise_method = me.promise;
-                    me.promise = function (promise) {
-                        promise.then(resolve, reject);
+                    var previousPromise = me.promise;
+                    me.promise = function (inputPromise) {
+                        inputPromise.then(resolve, reject);
                         // Back to your regularly schedule programming.
-                        me.promise = old_promise_method;
+                        me.promise = previousPromise;
                         return me.promise.apply(me, arguments);
                     };
                     me.trigger.apply(me, args);
@@ -161,16 +161,16 @@ module.exports = {
             }
 
             if (canHandlePromise) {
-                var removeSuccess = me.completed.listen(function(args) {
+                var removeSuccess = me.completed.listen(function(argsArr) {
                     removeSuccess();
                     removeFailed();
-                    resolve(args);
+                    resolve(argsArr);
                 });
 
-                var removeFailed = me.failed.listen(function(args) {
+                var removeFailed = me.failed.listen(function(argsArr) {
                     removeSuccess();
                     removeFailed();
-                    reject(args);
+                    reject(argsArr);
                 });
             }
 
