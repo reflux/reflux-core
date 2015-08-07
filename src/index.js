@@ -1,30 +1,32 @@
-exports.ActionMethods = require("./ActionMethods");
+const Reflux = {};
 
-exports.ListenerMethods = require("./ListenerMethods");
+Reflux.ActionMethods = require("./ActionMethods");
 
-exports.PublisherMethods = require("./PublisherMethods");
+Reflux.ListenerMethods = require("./ListenerMethods");
 
-exports.StoreMethods = require("./StoreMethods");
+Reflux.PublisherMethods = require("./PublisherMethods");
 
-exports.createAction = require("./createAction");
+Reflux.StoreMethods = require("./StoreMethods");
 
-exports.createStore = require("./createStore");
+Reflux.createAction = require("./createAction");
+
+Reflux.createStore = require("./createStore");
 
 var maker = require("./joins").staticJoinCreator;
 
-exports.joinTrailing = exports.all = maker("last"); // Reflux.all alias for backward compatibility
+Reflux.joinTrailing = Reflux.all = maker("last"); // Reflux.all alias for backward compatibility
 
-exports.joinLeading = maker("first");
+Reflux.joinLeading = maker("first");
 
-exports.joinStrict = maker("strict");
+Reflux.joinStrict = maker("strict");
 
-exports.joinConcat = maker("all");
+Reflux.joinConcat = maker("all");
 
-var _ = exports.utils = require("./utils");
+var _ = Reflux.utils = require("./utils");
 
-exports.EventEmitter = _.EventEmitter;
+Reflux.EventEmitter = _.EventEmitter;
 
-exports.Promise = _.Promise;
+Reflux.Promise = _.Promise;
 
 /**
  * Convenience function for creating a set of actions
@@ -32,14 +34,14 @@ exports.Promise = _.Promise;
  * @param definitions the definitions for the actions to be created
  * @returns an object with actions of corresponding action names
  */
-exports.createActions = function(definitions) {
+Reflux.createActions = function(definitions) {
     var actions = {};
     for (var k in definitions){
         if (definitions.hasOwnProperty(k)) {
             var val = definitions[k],
                 actionName = _.isObject(val) ? k : val;
 
-            actions[actionName] = exports.createAction(val);
+            actions[actionName] = Reflux.createAction(val);
         }
     }
     return actions;
@@ -48,16 +50,16 @@ exports.createActions = function(definitions) {
 /**
  * Sets the eventmitter that Reflux uses
  */
-exports.setEventEmitter = function(ctx) {
-    exports.EventEmitter = _.EventEmitter = ctx;
+Reflux.setEventEmitter = function(ctx) {
+    Reflux.EventEmitter = _.EventEmitter = ctx;
 };
 
 
 /**
  * Sets the Promise library that Reflux uses
  */
-exports.setPromise = function(ctx) {
-    exports.Promise = _.Promise = ctx;
+Reflux.setPromise = function(ctx) {
+    Reflux.Promise = _.Promise = ctx;
 };
 
 
@@ -65,7 +67,7 @@ exports.setPromise = function(ctx) {
  * Sets the Promise factory that creates new promises
  * @param {Function} factory has the signature `function(resolver) { return [new Promise]; }`
  */
-exports.setPromiseFactory = function(factory) {
+Reflux.setPromiseFactory = function(factory) {
     _.createPromise = factory;
 };
 
@@ -73,15 +75,19 @@ exports.setPromiseFactory = function(factory) {
 /**
  * Sets the method used for deferring actions and stores
  */
-exports.nextTick = function(nextTick) {
+Reflux.nextTick = function(nextTick) {
     _.nextTick = nextTick;
+};
+
+Reflux.use = function(pluginCb) {
+    pluginCb(Reflux);
 };
 
 /**
  * Provides the set of created actions and stores for introspection
  */
 /*eslint-disable no-underscore-dangle*/
-exports.__keep = require("./Keep");
+Reflux.__keep = require("./Keep");
 /*eslint-enable no-underscore-dangle*/
 
 /**
@@ -94,3 +100,5 @@ if (!Function.prototype.bind) {
     "https://github.com/spoike/refluxjs#es5"
   );
 }
+
+export default Reflux;

@@ -36,6 +36,38 @@ You need to have NodeJS installed. After cloning this repository and running `np
 
 * `npm run benchmark` To run the benchmark test
 
+## Extending `reflux-core`
+
+To create an add-on for reflux, you may do that by creating a callback that `Reflux#use` can handle.
+
+```javascript
+// plugin.js
+export default function(Reflux) {
+    // add a simple function to Reflux
+    Reflux.createState = function() {
+        return {};
+    };
+}
+```
+
+The user will have to do the following:
+
+```javascript
+import Reflux from "Reflux";
+import plugin from "./plugin.js";
+
+Reflux.use(plugin);
+
+console.log(Reflux.createState());
+// outputs {}
+```
+
+When publishing the plugin to npm, you don't need to have `reflux-core` or `reflux` as a dependency among `dependencies`in `package.json` as the user provides the version they use through the `Reflux#use` method. If you're writing tests, you may declare them in `devDependencies` instead.
+
+You may name your library `reflux-addon-{name}`.
+
+Please do provide `reflux-addon` among `keywords` in `package.json` for users to easily search your plugin in npm.
+
 ## Colophon
 
 [List of contributors](https://github.com/reflux/reflux-core/graphs/contributors) is available on Github.
