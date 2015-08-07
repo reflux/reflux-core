@@ -16,7 +16,8 @@
     "benchmark": "node test/benchmarks",
     "watch:test": "watch 'npm run lint:test && npm run test' test/",
     "watch:src": "watch 'npm run build' src/",
-    "watch": "parallelshell 'npm run watch:src' 'npm run watch:test'"
+    "watch": "parallelshell 'npm run watch:src' 'npm run watch:test'",
+    "prepublish": "npm run compile"
   },
   "author": "Mikael Brassman",
   "license": "BSD-3-Clause",

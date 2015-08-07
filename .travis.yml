@@ -8,6 +8,7 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 
 script:
+  - npm run compile
   - npm run test:travis
 
 env:
