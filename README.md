@@ -28,13 +28,21 @@ Reflux depends on ES5 features. For older browsers that are missing them you wil
 
 ## Development
 
-You need to have NodeJS installed. After cloning this repository and running `npm install` you can run the following scripts:
+You need to have NodeJS installed.
+
+1. Clone this repository
+
+2. Run `npm install`
+
+You can run the following npm scripts, for more check the project's `package.json` file.
 
 * `npm test` To run the jshint and tests
 
 * `npm run watch` To run the watch task. It will lint and test the code whenever a file is saved.
 
 * `npm run benchmark` To run the benchmark test
+
+[Husky git hooks](https://github.com/typicode/husky) will prevent bad commits or bad pushes for you by linting and testing the code.
 
 ## Extending `reflux-core`
 
