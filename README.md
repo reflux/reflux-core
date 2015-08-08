@@ -24,7 +24,7 @@ The following command installs `reflux-core` as an npm package:
 
 ### ES5
 
-Like React, Reflux depends on an es5-shim for older browsers. The es5-shim.js from [kriskowal's es5-shim](https://github.com/kriskowal/es5-shim) provides everything required.
+Reflux depends on ES5 features. For older browsers that are missing them you will need a shim such as `core-js/es5` from [core-js](https://github.com/zloirock/core-js#ecmascript-5) or `es5-shim.js` from [kriskowal's es5-shim](https://github.com/kriskowal/es5-shim).
 
 ## Development
 
@@ -40,27 +40,31 @@ You need to have NodeJS installed. After cloning this repository and running `np
 
 ### As an add-on
 
-To create an add-on for reflux, you may do that by creating a callback that `Reflux#use` can handle.
+To create an add-on for Reflux, you may do that by creating a callback that `Reflux#use` can handle.
 
 ```javascript
-// plugin.js
+// addon.js
+
+// The callback recieves an instance of Reflux library that is being used.
 export default function(Reflux) {
+
     // add a simple function to Reflux
     Reflux.createState = function() {
         return {};
     };
+
 }
 ```
 
-The user will have to do the following:
+The user will have to do the following to use the add-on:
 
 ```javascript
 import Reflux from "reflux-core";
     // or "reflux" or any other reflux with extensions
 
-import plugin from "./plugin.js";
+import createStateAddon from "./addon.js";
 
-Reflux.use(plugin);
+Reflux.use(createStateAddon);
 
 console.log(Reflux.createState());
 // outputs {}
