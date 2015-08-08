@@ -4,7 +4,9 @@ Check for latest changes on the [milestones page](https://github.com/reflux/refl
 
 ## v0.2.0
 
-* Version numbers exposed in Reflux.version object.
+* Extend `Reflux.createActions` to accept a mixed array of strings and definition objects. See [reflux/refluxjs#391](https://github.com/reflux/refluxjs/pull/391).
+
+* Version number for reflux-core is exposed in Reflux.version object. May also contain version numbers for extensions and add-ons.
 
 * Implemented hook for add-ons and extensions, Reflux.use(). See [#2](https://github.com/reflux/reflux-core/issues/2), [reflux/refluxjs#380](https://github.com/reflux/refluxjs/issues/380).
 
