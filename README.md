@@ -38,6 +38,8 @@ You need to have NodeJS installed. After cloning this repository and running `np
 
 ## Extending `reflux-core`
 
+### As an add-on
+
 To create an add-on for reflux, you may do that by creating a callback that `Reflux#use` can handle.
 
 ```javascript
@@ -53,7 +55,9 @@ export default function(Reflux) {
 The user will have to do the following:
 
 ```javascript
-import Reflux from "Reflux";
+import Reflux from "reflux-core";
+    // or "reflux" or any other reflux with extensions
+
 import plugin from "./plugin.js";
 
 Reflux.use(plugin);
@@ -62,11 +66,31 @@ console.log(Reflux.createState());
 // outputs {}
 ```
 
-When publishing the plugin to npm, you don't need to have `reflux-core` or `reflux` as a dependency among `dependencies`in `package.json` as the user provides the version they use through the `Reflux#use` method. If you're writing tests, you may declare them in `devDependencies` instead.
+* When publishing the plugin to npm, you don't need to have `reflux-core` or `reflux` as a dependency among `dependencies` in `package.json` as the user provides the version they use through the `Reflux#use` method.
 
-You may name your library `reflux-addon-{name}`.
+* If you're writing tests, you may want to use `reflux-core` and put it in `devDependencies` instead.
 
-Please do provide `reflux-addon` among `keywords` in `package.json` for users to easily search your plugin in npm.
+* You may name your library `reflux-addon-{name}`.
+
+* Please do provide `reflux-addon` among `keywords` in `package.json` so that users can easily search for your addon in the npm registry.
+
+### As extensions for a view library
+
+Install reflux-core as a dependency and publish it as a library to npm. Here is an example entry point:
+
+```javascript
+// index.js
+import Reflux from "reflux-core";
+import frameworkExtras from "./framework-extras";
+
+Reflux.use(frameworkExtras); // like an add-on
+
+export default Reflux; // export the amended Reflux lib
+```
+
+* You may name your library `reflux-{view library}`. E.g. if you're doing mixins for angular then it may be named `reflux-angular`.
+
+* Please do provide `reflux` among `keywords` in `package.json` so that users can easily search for your extensions in the npm registry.
 
 ## Colophon
 
