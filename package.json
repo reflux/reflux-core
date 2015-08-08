@@ -17,7 +17,9 @@
     "watch:test": "watch 'npm run lint:test && npm run test' test/",
     "watch:src": "watch 'npm run build' src/",
     "watch": "parallelshell 'npm run watch:src' 'npm run watch:test'",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run lint && npm run compile && npm run test:mocha",
+    "precommit": "npm run prepublish",
+    "prepush": "npm run prepublish"
   },
   "author": "Mikael Brassman",
   "license": "BSD-3-Clause",
@@ -49,6 +51,7 @@
     "chai-as-promised": "latest",
     "es6-promise": "^2.3.0",
     "eslint": "^0.24.1",
+    "husky": "^0.9.2",
     "jshint": "latest",
     "karma": "latest",
     "karma-browserify": "latest",
