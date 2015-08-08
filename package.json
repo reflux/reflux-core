@@ -11,7 +11,7 @@
     "lint:test": "jshint test/",
     "lint:src": "eslint src/",
     "lint": "npm run lint:test && npm run lint:src",
-    "compile": "babel src --out-dir lib",
+    "compile": "babel src --out-dir lib && ./scripts/version",
     "build": "npm run lint && npm run compile && npm run test",
     "benchmark": "node test/benchmarks",
     "watch:test": "watch 'npm run lint:test && npm run test' test/",
@@ -60,6 +60,7 @@
     "mocha": "latest",
     "parallelshell": "latest",
     "q": "^1.0.1",
+    "replace": "^0.3.0",
     "sinon": "^1.10.3",
     "watch": "latest"
   }

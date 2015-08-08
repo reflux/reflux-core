@@ -1,4 +1,6 @@
-const Reflux = {};
+const Reflux = {
+    version: "@VERSION"
+};
 
 Reflux.ActionMethods = require("./ActionMethods");
 

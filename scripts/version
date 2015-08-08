@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var version = require('../package.json').version,
+    replace = require('replace');
+
+replace({
+    regex: "@VERSION",
+    replacement: version,
+    paths: ["./lib/index.js"],
+    recursive: false,
+    silent: true
+});
+
+console.log("Wrote version " + version + " to ./lib/index.js");
