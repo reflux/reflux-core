@@ -38,24 +38,30 @@ Reflux.Promise = _.Promise;
  * @param definitions the definitions for the actions to be created
  * @returns an object with actions of corresponding action names
  */
-Reflux.createActions = function(definitions) {
-    var actions = {};
-    if (definitions instanceof Array) {
-        definitions.forEach(function(val) {
-            var isObj = _.isObject(val),
-                actionName = isObj ? Object.keys(val)[0] : val;
-
-            val = isObj ? val[actionName] : val;
-            actions[actionName] = Reflux.createAction(val);
-        });
-    } else {
+Reflux.createActions = (function() {
+    var reducer = function(definitions, actions) {
         Object.keys(definitions).forEach(function(actionName) {
             var val = definitions[actionName];
             actions[actionName] = Reflux.createAction(val);
         });
-    }
-    return actions;
-};
+    };
+
+    return function(definitions) {
+        var actions = {};
+        if (definitions instanceof Array) {
+            definitions.forEach(function(val) {
+                if (_.isObject(val)) {
+                    reducer(val, actions);
+                } else {
+                    actions[val] = Reflux.createAction(val);
+                }
+            });
+        } else {
+            reducer(definitions, actions);
+        }
+        return actions;
+    };
+})();
 
 /**
  * Sets the eventmitter that Reflux uses
