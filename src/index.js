@@ -1,5 +1,7 @@
 const Reflux = {
-    version: "@VERSION"
+    version: {
+        "reflux-core": "@VERSION"
+    }
 };
 
 Reflux.ActionMethods = require("./ActionMethods");
