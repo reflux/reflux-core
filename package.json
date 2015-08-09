@@ -4,7 +4,7 @@
   "description": "An asynchronous FRP event and data library, for use in uni-directional dataflow application architectures.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha ./",
+    "test": "mocha ./test/*.spec.js",
     "lint": "eslint ./"
   },
   "browserify": {
@@ -48,7 +48,8 @@
     "dox": "^0.8.0",
     "eslint": "^1.1.0",
     "mocha": "latest",
-    "sinon": "^1.15.4"
+    "sinon": "^1.15.4",
+    "sinon-chai": "^2.8.0"
   },
   "engines": {
     "node": ">=0.12"
