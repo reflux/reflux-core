@@ -4,6 +4,7 @@
   "description": "A simple library for uni-directional dataflow application architecture inspired by ReactJS Flux",
   "main": "lib/index.js",
   "scripts": {
+    "clean": "rimraf ./lib",
     "test:mocha": "mocha",
     "test:karma": "karma start test/config/karma.conf.js",
     "test:travis": "karma start test/config/karma-travis.conf.js",
@@ -11,7 +12,7 @@
     "lint:test": "jshint test/",
     "lint:src": "eslint src/",
     "lint": "npm run lint:test && npm run lint:src",
-    "compile": "babel src --out-dir lib && ./scripts/version",
+    "compile": "npm run clean && babel src --out-dir lib && ./scripts/version",
     "build": "npm run lint && npm run compile && npm run test",
     "benchmark": "node test/benchmarks",
     "watch:test": "watch 'npm run lint:test && npm run test' test/",
@@ -64,6 +65,7 @@
     "parallelshell": "latest",
     "q": "^1.0.1",
     "replace": "^0.3.0",
+    "rimraf": "^2.4.2",
     "sinon": "^1.10.3",
     "watch": "latest"
   }
