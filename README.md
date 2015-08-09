@@ -36,9 +36,11 @@ You need to have NodeJS installed.
 
 You can run the following npm scripts, for more check the project's `package.json` file.
 
+* `npm compile` Use babel to transpile the ES6 code to ES5, output is `/lib`.
+
 * `npm test` To run the jshint and tests
 
-* `npm run watch` To run the watch task. It will lint and test the code whenever a file is saved.
+* `npm run watch` To run the watch task. It will lint, compile and test the code whenever a file is saved.
 
 * `npm run benchmark` To run the benchmark test
 
