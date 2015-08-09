@@ -44,11 +44,11 @@
     "babelify": "^6.1.3",
     "benchmark": "^1.0.0",
     "browserify": "~11.0.0",
-    "chai": "latest",
-    "chai-as-promised": "latest",
+    "chai": "^3.2.0",
     "dox": "^0.8.0",
     "eslint": "^1.1.0",
-    "mocha": "latest"
+    "mocha": "latest",
+    "sinon": "^1.15.4"
   },
   "engines": {
     "node": ">=0.12"

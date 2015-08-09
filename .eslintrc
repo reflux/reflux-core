@@ -23,7 +23,16 @@
 		"no-underscore-dangle":0
 	},
 	"ecmaFeatures": {
-		"spread":true,
-		"generators":true
+		// reflux-core uses context aware actions and events, which requires dynamic `this` style bindings
+		// use of super when paired with class can cause problems with the lexical nature of contexts within
+		// reflux-core
+		"superInFunctions":false,
+		
+		// reflux-core is an isomorphic library that does not have any view-rendering responsibilities
+		// keeping jsx out of the core ensures it will remain as portable as possible without need for transpile
+		"jsx":false,
+
+		// designed as server-side javascript first, with browser compile compat via babel
+		"modules":false
 	}
 }
