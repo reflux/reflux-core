@@ -1,7 +1,6 @@
 {
 	"parser": "babel-eslint",
 	"env":{
-		"browser":true,
 		"node":true,
 		"es6":true,
 		"mocha":true
@@ -24,7 +23,6 @@
 		"no-underscore-dangle":0
 	},
 	"ecmaFeatures": {
-		"jsx":true,
 		"spread":true,
 		"generators":true
 	}
