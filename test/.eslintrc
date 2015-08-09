@@ -1,0 +1,14 @@
+//overrides of linting rules allowed for testing purposes
+{
+ "env":{
+	"browser":true
+ },
+ "ecmaFeatures":{
+	"jsx":true
+ },
+ "globals":{
+ 	"chai":true,
+	"expect":true,
+	"should":true
+ }
+}
