@@ -46,12 +46,10 @@
     "browserify": "~10.2.3",
     "chai": "latest",
     "chai-as-promised": "latest",
-    "eslint": "^0.24.1",
+    "eslint": "latest",
     "mocha": "latest"
   },
-  {
- 	"engines":{
+	"engines":{
 		"node":">=0.12"	
 	}	 
-  }
 }
