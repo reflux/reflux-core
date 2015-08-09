@@ -1,6 +1,6 @@
 {
   "name": "reflux-core",
-  "version": "0.2.0-rc",
+  "version": "0.3.0-preAlpha",
   "description": "An asynchronous FRP event and data library, for use in uni-directional dataflow application architectures.",
   "main": "lib/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
       "babelify"
     ]
   },
-  "author": "Mikael Brassman (https://github.com/spoike)",
+  "author": "Brian Vanderbusch (https://github.com/LongLiveCHIEF) <brian@hackerhappyhour.com>",
   "contributors": [
     "Brian Vanderbusch (https://github.com/LongLiveCHIEF) <brian@hackerhappyhour.com>",
     "Mikael Brassman (https://github.com/spoike)"
