@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha ./",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+	"build:docs":"dox  < ./src/**.js > ./docs/**.json"
   },
   "browserify": {
     "transform": [
@@ -46,6 +47,7 @@
     "browserify": "~11.0.0",
     "chai": "latest",
     "chai-as-promised": "latest",
+    "dox": "^0.8.0",
     "eslint": "^1.1.0",
     "mocha": "latest"
   },
