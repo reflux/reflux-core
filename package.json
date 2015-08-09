@@ -5,8 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha ./",
-    "lint": "eslint ./",
-	"build:docs":"dox  < ./src/**.js > ./docs/**.json"
+    "lint": "eslint ./"
   },
   "browserify": {
     "transform": [
