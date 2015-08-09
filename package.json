@@ -1,24 +1,11 @@
 {
   "name": "reflux-core",
   "version": "0.2.0-rc",
-  "description": "A simple library for uni-directional dataflow application architecture inspired by ReactJS Flux",
+  "description": "An asynchronous FRP event and data library, for use in uni-directional dataflow application architectures.",
   "main": "lib/index.js",
   "scripts": {
-    "pretest": "npm run lint",
-    "docgen": "docco ./src/*.js",
-    "test:mocha": "mocha",
-    "test:karma": "karma start test/config/karma.conf.js",
-    "test:travis": "karma start test/config/karma-travis.conf.js",
-    "test": "npm run test:mocha && npm run test:karma",
-    "lint:test": "jshint test/",
-    "lint:src": "eslint src/",
-    "lint": "npm run lint:test && npm run lint:src",
-    "compile": "babel src --out-dir lib",
-    "build": "npm run lint && npm run compile && npm run test",
-    "benchmark": "node test/benchmarks",
-    "watch:test": "watch 'npm run lint:test && npm run test' test/",
-    "watch:src": "watch 'npm run build' src/",
-    "watch": "parallelshell 'npm run watch:src' 'npm run watch:test'"
+  	"test":"mocha ./",
+	"lint":"eslint ./"
   },
   "browserify": {
     "transform": [
@@ -27,7 +14,8 @@
   },
   "author": "Mikael Brassman (https://github.com/spoike)",
   "contributors": [
-    "Brian Vanderbusch (https://github.com/LongLiveCHIEF) <brian@hackerhappyhour.com>"
+    "Brian Vanderbusch (https://github.com/LongLiveCHIEF) <brian@hackerhappyhour.com>",
+	"Mikael Brassman (https://github.com/spoike)"
   ],
   "license": "BSD-3-Clause",
   "repository": {
@@ -39,12 +27,13 @@
   },
   "keywords": [
     "reflux",
-    "flux",
-    "architecture",
+	"reactive",
+	"FRP",
+	"uni-directional",
     "dataflow",
-    "action",
     "events",
-    "data"
+	"isomorphic",
+	"asynchronous"
   ],
   "dependencies": {
     "rx": "^2.5.3"
@@ -57,21 +46,8 @@
     "browserify": "~10.2.3",
     "chai": "latest",
     "chai-as-promised": "latest",
-    "es6-promise": "^2.3.0",
     "eslint": "^0.24.1",
-    "jshint": "latest",
-    "karma": "latest",
-    "karma-browserify": "latest",
-    "karma-commonjs": "latest",
-    "karma-mocha": "latest",
-    "karma-phantomjs-launcher": "latest",
-    "karma-sauce-launcher": "latest",
-    "karma-spec-reporter": "latest",
-    "mocha": "latest",
-    "parallelshell": "latest",
-    "q": "^1.0.1",
-    "sinon": "^1.10.3",
-    "watch": "latest"
+    "mocha": "latest"
   },
   {
  	"engines":{
