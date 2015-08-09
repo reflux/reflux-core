@@ -2,6 +2,10 @@
 
 Check for latest changes on the [milestones page](https://github.com/reflux/refluxjs/milestones).
 
+## v0.2.1
+
+* Improved `Reflux.createActions`. See [reflux/refluxjs#391](https://github.com/reflux/refluxjs/pull/391).
+
 ## v0.2.0
 
 * Extend `Reflux.createActions` to accept a mixed array of strings and definition objects. See [reflux/refluxjs#391](https://github.com/reflux/refluxjs/pull/391).
