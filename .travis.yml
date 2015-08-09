@@ -1,14 +1,15 @@
 language: node_js
 
 node_js:
-  - "0.11.13"
+  - "0.12"
+  - "0.11"
 
 before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
 
 script:
-  - npm run test:travis
+  - npm test
 
 env:
   global:
@@ -16,6 +17,6 @@ env:
     - secure: tzo3y1mW5FDcQpxEEtMNa3Pu6pO84wAAyRdqa07doJPoDXCKan08xVlQdgrA0Xs+h0SXHTP6hs6PupY4bTvfgKB+P0AF7Jdn1NTiZNM8SwPHz84fu3uRVziS5E7xTdIr+Y/ZVj903bFMttWjzPLC8ooQCOxdHtRl7tiyqhikeHw7TdLgICHX1TBW/GYlu/VtXG4KzSKtC3qhkuI5FsR9IjytyLz6AK1ks1TiFIj+mNKy1m30G08OAniET/D69WuejylhEyYjGzroZfaeI02aAcawPmTioVkMgfGccowj5oHaK9y8gxUG3MOFBD0faZNKvor17ChaoE+bgkbJxNEaOx6Gp8Qk1wiqLEeESgOOAKbi/Wa7xrt9XA8isZkVa8RqSOeOprWsWOf4lQQ3An4P7H5c8aV9B3nwpegPHkiat7UIUYs3Di5S9cKCWAfaFCLPqPUnakk4ubSKNtxMc+2NrD1Yf0VkHAANi3ylmQfCkapRDg9g7LFPMeC+3ZU3u7NOjtPbQNB74ZRx4CzhfoTNrFyCfKXqGaOvGOIn2nMUWavm5UC7OLZNQL3zbInScu/S47z57cheGVhTqN4b3G1W1olcpS2OOBDVRcdOhgHk8E/jNbIQ0UiTv7D0AOUlSstydfAP5XDkdoHcpk22/btWiHGszd4D/0Wd8Yam0u6t14k=
 
 addons:
-  sauce_connect: true
+  sauce_connect: false 
 
 sudo: false
