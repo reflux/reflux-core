@@ -122,6 +122,25 @@ module.exports = {
     },
 
     /**
+     * Wraps the trigger mechanism with a deferral function.
+     *
+     * @param {Function} callback the deferral function,
+     *        first argument is the resolving function and the
+     *        rest are the arguments provided from the previous
+     *        trigger invocation
+     */
+    deferWith: function(callback) {
+        var oldTrigger = this.trigger,
+            ctx = this,
+            resolver = function() {
+                oldTrigger.apply(ctx, arguments);
+            };
+        this.trigger = function() {
+            callback.apply(ctx, [resolver].concat([].splice.call(arguments, 0)));
+        };
+    },
+
+    /**
      * Returns a Promise for the triggered action
      *
      * @return {Promise}
