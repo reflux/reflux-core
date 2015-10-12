@@ -7,25 +7,6 @@ export function callbackName(string, prefix) {
     return prefix + exports.capitalize(string);
 }
 
-export var environment = {};
-
-function checkEnv(target) {
-    let flag;
-    try {
-        /*eslint-disable no-eval */
-        if (eval(target)) {
-            flag = true;
-        }
-        /*eslint-enable no-eval */
-    }
-    catch (e) {
-        flag = false;
-    }
-    environment[callbackName(target, "has")] = flag;
-}
-checkEnv("setImmediate");
-checkEnv("Promise");
-
 /*
  * isObject, extend, isFunction, isArguments are taken from undescore/lodash in
  * order to remove the dependency
@@ -60,15 +41,9 @@ export function isFunction(value) {
 
 exports.EventEmitter = require("eventemitter3");
 
-if (environment.hasSetImmediate) {
-    exports.nextTick = function(callback) {
-        setImmediate(callback);
-    };
-} else {
-    exports.nextTick = function(callback) {
-        setTimeout(callback, 0);
-    };
-}
+exports.nextTick = function(callback) {
+    setTimeout(callback, 0);
+};
 
 export function object(keys, vals){
     var o = {}, i = 0;
@@ -76,16 +51,6 @@ export function object(keys, vals){
         o[keys[i]] = vals[i];
     }
     return o;
-}
-
-if (environment.hasPromise) {
-    exports.Promise = Promise;
-    exports.createPromise = function (resolver) {
-        return new exports.Promise(resolver);
-    };
-} else {
-    exports.Promise = null;
-    exports.createPromise = function() {};
 }
 
 export function isArguments(value) {

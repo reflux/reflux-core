@@ -70,24 +70,6 @@ Reflux.setEventEmitter = function(ctx) {
     Reflux.EventEmitter = _.EventEmitter = ctx;
 };
 
-
-/**
- * Sets the Promise library that Reflux uses
- */
-Reflux.setPromise = function(ctx) {
-    Reflux.Promise = _.Promise = ctx;
-};
-
-
-/**
- * Sets the Promise factory that creates new promises
- * @param {Function} factory has the signature `function(resolver) { return [new Promise]; }`
- */
-Reflux.setPromiseFactory = function(factory) {
-    _.createPromise = factory;
-};
-
-
 /**
  * Sets the method used for deferring actions and stores
  */

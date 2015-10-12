@@ -53,8 +53,7 @@ var createAction = function(definition) {
     }, PublisherMethods, ActionMethods, definition);
 
     var functor = function() {
-        var triggerType = functor.sync ? "trigger" :
-            ( _.environment.hasPromise ? "triggerPromise" : "triggerAsync" );
+        var triggerType = functor.sync ? "trigger" : "triggerAsync";
         return functor[triggerType].apply(functor, arguments);
     };
 
