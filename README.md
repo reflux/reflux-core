@@ -12,6 +12,8 @@ A simple core library for unidirectional dataflow architecture inspired by [Flux
 
 For an overview of reflux with react extensions, look at the [refluxjs repository][refluxjs-url].
 
+Here are the [API docs](docs/api.md) for reflux-core.
+
 ## Installation
 
 You can currently install the package as an npm package.
