@@ -30,8 +30,6 @@ var _ = Reflux.utils = require("./utils");
 
 Reflux.EventEmitter = _.EventEmitter;
 
-Reflux.Promise = _.Promise;
-
 /**
  * Convenience function for creating a set of actions
  *
