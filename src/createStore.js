@@ -3,7 +3,7 @@ var _ = require("./utils"),
     mixer = require("./mixer"),
     bindMethods = require("./bindMethods");
 
-var allowed = { preEmit: 1, shouldEmit: 1 };
+var allowed = { preEmit: 1, shouldEmit: 1, preListenedTo: 1, preStopListenedTo: 1, postListenedTo: 1, postStopListenedTo: 1 };
 
 /**
  * Creates an event emitting Data Store. It is mixed in with functions

@@ -50,6 +50,30 @@ var flattenListenables = function(listenables) {
 module.exports = {
 
     /**
+     * Hook used by the listener that is invoked before adding subscriber
+     * The arguments are the ones that the listener is invoked with.
+     */
+    preListenedTo: function() {},
+
+    /**
+     * Hook used by the listener that is invoked before removing subscriber
+     * The arguments are the ones that the listener is invoked with.
+     */
+    preStopListenedTo: function() {},
+
+    /**
+     * Hook used by the listener that is invoked after adding subscriber
+     * The arguments are the ones that the listener is invoked with.
+     */
+    postListenedTo: function() {},
+
+    /**
+     * Hook used by the listener that is invoked after removing subscriber
+     * The arguments are the ones that the listener is invoked with.
+     */
+    postStopListenedTo: function() {},
+
+    /**
      * An internal utility function used by `validateListening`
      *
      * @param {Action|Store} listenable The listenable we want to search for
@@ -116,19 +140,32 @@ module.exports = {
     listenTo: function(listenable, callback, defaultCallback) {
         var desub, unsubscriber, subscriptionobj, subs = this.subscriptions = this.subscriptions || [];
         _.throwIf(this.validateListening(listenable));
+        if(listenable && listenable.preListenedTo) {
+            listenable.preListenedTo.apply(listenable, arguments);
+        }
         this.fetchInitialState(listenable, defaultCallback);
         desub = listenable.listen(this[callback] || callback, this);
         unsubscriber = function() {
             var index = subs.indexOf(subscriptionobj);
             _.throwIf(index === -1, "Tried to remove listen already gone from subscriptions list!");
+            if(this.listenable && this.listenable.preStopListenedTo){
+                this.listenable.preStopListenedTo.apply(this.listenable,arguments);
+            }
             subs.splice(index, 1);
             desub();
+            if(this.listenable && this.listenable.postStopListenedTo){
+                this.listenable.postStopListenedTo.apply(this.listenable,arguments);
+            }
+
         };
         subscriptionobj = {
             stop: unsubscriber,
             listenable: listenable
         };
         subs.push(subscriptionobj);
+        if(listenable && listenable.postListenedTo) {
+            listenable.postListenedTo.apply(listenable, arguments);
+        }
         return subscriptionobj;
     },
 
