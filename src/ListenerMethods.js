@@ -149,12 +149,12 @@ module.exports = {
             var index = subs.indexOf(subscriptionobj);
             _.throwIf(index === -1, "Tried to remove listen already gone from subscriptions list!");
             if(this.listenable && this.listenable.preStopListenedTo){
-                this.listenable.preStopListenedTo.apply(this.listenable,arguments);
+                this.listenable.preStopListenedTo.apply(this.listenable, arguments);
             }
             subs.splice(index, 1);
             desub();
             if(this.listenable && this.listenable.postStopListenedTo){
-                this.listenable.postStopListenedTo.apply(this.listenable,arguments);
+                this.listenable.postStopListenedTo.apply(this.listenable, arguments);
             }
 
         };
