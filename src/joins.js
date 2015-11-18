@@ -2,8 +2,8 @@
  * Internal module used to create static and instance join methods
  */
 
-var createStore = require("./createStore"),
-    _ = require("./utils");
+import createStore from "./createStore";
+import * as _ from "./utils";
 
 var slice = Array.prototype.slice,
     strategyMethodNames = {
@@ -18,7 +18,7 @@ var slice = Array.prototype.slice,
  * @param {String} strategy Which strategy to use when tracking listenable trigger arguments
  * @returns {Function} A static function which returns a store with a join listen on the given listenables using the given strategy
  */
-exports.staticJoinCreator = function(strategy){
+export function staticJoinCreator(strategy){
     return function(/* listenables... */) {
         var listenables = slice.call(arguments);
         return createStore({
@@ -27,14 +27,14 @@ exports.staticJoinCreator = function(strategy){
             }
         });
     };
-};
+}
 
 /**
  * Used in `ListenerMethods.js` to create the instance join methods
  * @param {String} strategy Which strategy to use when tracking listenable trigger arguments
  * @returns {Function} An instance method which sets up a join listen on the given listenables using the given strategy
  */
-exports.instanceJoinCreator = function(strategy){
+export function instanceJoinCreator(strategy){
     return function(/* listenables..., callback*/){
         _.throwIf(arguments.length < 2, "Cannot create a join with less than 2 listenables!");
         var listenables = slice.call(arguments),
@@ -58,7 +58,7 @@ exports.instanceJoinCreator = function(strategy){
         this.subscriptions = (this.subscriptions || []).concat(subobj);
         return subobj;
     };
-};
+}
 
 // ---- internal join functions ----
 

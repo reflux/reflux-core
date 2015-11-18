@@ -1,12 +1,14 @@
-exports.createdStores = [];
+const createdStores = [];
 
-exports.createdActions = [];
+const createdActions = [];
 
-exports.reset = function() {
-    while(exports.createdStores.length) {
-        exports.createdStores.pop();
+function reset() {
+    while(createdStores.length) {
+        createdStores.pop();
     }
-    while(exports.createdActions.length) {
-        exports.createdActions.pop();
+    while(createdActions.length) {
+        createdActions.pop();
     }
-};
+}
+
+export default { createdStores, createdActions, reset };

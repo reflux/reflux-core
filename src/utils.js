@@ -41,9 +41,9 @@ export function isFunction(value) {
 
 exports.EventEmitter = require("eventemitter3");
 
-exports.nextTick = function(callback) {
+export function nextTick(callback) {
     setTimeout(callback, 0);
-};
+}
 
 export function object(keys, vals){
     var o = {}, i = 0;

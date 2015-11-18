@@ -1,6 +1,6 @@
-var _ = require("./utils");
+import * as _ from "./utils";
 
-module.exports = function mix(def) {
+export default function mix(def) {
     var composed = {
         init: [],
         preEmit: [],
@@ -54,4 +54,4 @@ module.exports = function mix(def) {
     });
 
     return updated;
-};
+}

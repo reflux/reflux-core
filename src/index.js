@@ -1,34 +1,23 @@
-const Reflux = {
-    version: {
-        "reflux-core": "@VERSION"
-    }
+const version = {
+    "reflux-core": "@VERSION"
 };
 
-Reflux.ActionMethods = require("./ActionMethods");
+import ActionMethods from "./ActionMethods";
+import ListenerMethods from "./ListenerMethods";
+import PublisherMethods from "./PublisherMethods";
+import StoreMethods from "./StoreMethods";
 
-Reflux.ListenerMethods = require("./ListenerMethods");
+import { staticJoinCreator as maker} from "./joins";
+const joinTrailing = maker("last");
+const all = joinTrailing; // Reflux.all alias for backward compatibility
+const joinLeading = maker("first");
+const joinStrict = maker("strict");
+const joinConcat = maker("all");
 
-Reflux.PublisherMethods = require("./PublisherMethods");
-
-Reflux.StoreMethods = require("./StoreMethods");
-
-Reflux.createAction = require("./createAction");
-
-Reflux.createStore = require("./createStore");
-
-var maker = require("./joins").staticJoinCreator;
-
-Reflux.joinTrailing = Reflux.all = maker("last"); // Reflux.all alias for backward compatibility
-
-Reflux.joinLeading = maker("first");
-
-Reflux.joinStrict = maker("strict");
-
-Reflux.joinConcat = maker("all");
-
-var _ = Reflux.utils = require("./utils");
-
-Reflux.EventEmitter = _.EventEmitter;
+import * as _ from "./utils";
+const utils = _;
+import createAction from "./createAction";
+import createStore from "./createStore";
 
 /**
  * Convenience function for creating a set of actions
@@ -36,11 +25,11 @@ Reflux.EventEmitter = _.EventEmitter;
  * @param definitions the definitions for the actions to be created
  * @returns an object with actions of corresponding action names
  */
-Reflux.createActions = (function() {
+const createActions = (function() {
     var reducer = function(definitions, actions) {
         Object.keys(definitions).forEach(function(actionName) {
             var val = definitions[actionName];
-            actions[actionName] = Reflux.createAction(val);
+            actions[actionName] = createAction(val);
         });
     };
 
@@ -51,7 +40,7 @@ Reflux.createActions = (function() {
                 if (_.isObject(val)) {
                     reducer(val, actions);
                 } else {
-                    actions[val] = Reflux.createAction(val);
+                    actions[val] = createAction(val);
                 }
             });
         } else {
@@ -64,26 +53,47 @@ Reflux.createActions = (function() {
 /**
  * Sets the eventmitter that Reflux uses
  */
-Reflux.setEventEmitter = function(ctx) {
-    Reflux.EventEmitter = _.EventEmitter = ctx;
-};
+function setEventEmitter (ctx) {
+    _.EventEmitter = ctx;
+}
 
 /**
  * Sets the method used for deferring actions and stores
  */
-Reflux.nextTick = function(nextTick) {
+function nextTick (nextTick) {
     _.nextTick = nextTick;
-};
+}
 
-Reflux.use = function(pluginCb) {
-    pluginCb(Reflux);
-};
+function use (pluginCb) {
+    pluginCb(this);
+}
 
 /**
  * Provides the set of created actions and stores for introspection
  */
 /*eslint-disable no-underscore-dangle*/
-Reflux.__keep = require("./Keep");
+import __keep from "./Keep";
+
+export default {
+    version,
+    ActionMethods,
+    ListenerMethods,
+    PublisherMethods,
+    StoreMethods,
+    utils,
+    createAction,
+    createStore,
+    createActions,
+    setEventEmitter,
+    nextTick,
+    use,
+    joinTrailing,
+    all,
+    joinLeading,
+    joinStrict,
+    joinConcat,
+    __keep
+};
 /*eslint-enable no-underscore-dangle*/
 
 /**
@@ -96,5 +106,3 @@ if (!Function.prototype.bind) {
     "https://github.com/spoike/refluxjs#es5"
   );
 }
-
-export default Reflux;

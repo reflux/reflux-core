@@ -4,7 +4,6 @@
 var Ap = Array.prototype;
 var slice = Ap.slice;
 var Fp = Function.prototype;
-require('es6-promise').polyfill();
 
 if (!Fp.bind) {
   // PhantomJS doesn't support Function.prototype.bind natively, so

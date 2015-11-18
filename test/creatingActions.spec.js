@@ -2,7 +2,7 @@ import Q from 'q';
 import chai, { assert } from 'chai';
 import asPromised from 'chai-as-promised';
 import sinon from 'sinon';
-import { default as Reflux } from '../src';
+import Reflux from '../src';
 
 chai.use(asPromised);
 

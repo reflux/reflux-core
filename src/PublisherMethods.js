@@ -1,10 +1,10 @@
-var _ = require("./utils");
+import * as _ from "./utils";
 
 /**
  * A module of methods for object that you want to be able to listen to.
  * This module is consumed by `createStore` and `createAction`
  */
-module.exports = {
+export default {
 
     /**
      * Hook used by the publisher that is invoked before emitting

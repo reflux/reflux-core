@@ -1,7 +1,10 @@
-var _ = require("./utils"),
-    Keep = require("./Keep"),
-    mixer = require("./mixer"),
-    bindMethods = require("./bindMethods");
+import * as _ from "./utils";
+import Keep from "./Keep";
+import mixer from "./mixer";
+import { bindMethods } from "./bindMethods";
+import { default as StoreMethods } from "./StoreMethods";
+import { default as PublisherMethods } from "./PublisherMethods";
+import { default as ListenerMethods } from "./ListenerMethods";
 
 var allowed = { preEmit: 1, shouldEmit: 1 };
 
@@ -13,11 +16,7 @@ var allowed = { preEmit: 1, shouldEmit: 1 };
  * @param {Object} definition The data store object definition
  * @returns {Store} A data store instance
  */
-module.exports = function(definition) {
-
-    var StoreMethods = require("./StoreMethods"),
-        PublisherMethods = require("./PublisherMethods"),
-        ListenerMethods = require("./ListenerMethods");
+export default function createStore(definition) {
 
     definition = definition || {};
 
@@ -62,4 +61,4 @@ module.exports = function(definition) {
     Keep.createdStores.push(store);
 
     return store;
-};
+}

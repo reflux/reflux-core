@@ -1,4 +1,4 @@
-module.exports = function(store, definition) {
+export function bindMethods(store, definition) {
   for (var name in definition) {
     if (Object.getOwnPropertyDescriptor && Object.defineProperty) {
         var propertyDescriptor = Object.getOwnPropertyDescriptor(definition, name);
@@ -20,4 +20,4 @@ module.exports = function(store, definition) {
   }
 
   return store;
-};
+}

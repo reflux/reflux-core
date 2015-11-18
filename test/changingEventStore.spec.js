@@ -5,12 +5,6 @@ import * as internalUtils from '../src/utils';
 
 chai.use(asPromised);
 
-describe('Export internal EventEmitter', function() {
-    it('should be the original', function() {
-        assert.equal(internalUtils.EventEmitter, Reflux.EventEmitter);
-    });
-});
-
 describe('Switching the used EventEmitter to Node\'s internal', function() {
     var original;
 
@@ -24,7 +18,7 @@ describe('Switching the used EventEmitter to Node\'s internal', function() {
     });
 
     it('should not be the original', function() {
-        assert.notEqual(original, Reflux.EventEmitter);
+        assert.notEqual(original, internalUtils.EventEmitter);
     });
 
     it('should have the same interface', function() {

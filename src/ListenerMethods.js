@@ -1,5 +1,5 @@
-var _ = require("./utils"),
-    maker = require("./joins").instanceJoinCreator;
+import * as _ from "./utils";
+import { instanceJoinCreator as maker } from "./joins";
 
 /**
  * Extract child listenables from a parent from their
@@ -47,7 +47,7 @@ var flattenListenables = function(listenables) {
 /**
  * A module of methods related to listening.
  */
-module.exports = {
+export default {
 
     /**
      * An internal utility function used by `validateListening`

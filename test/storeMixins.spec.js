@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import sinon from 'sinon';
-import { default as Reflux } from '../src';
+import Reflux from '../src';
 
 describe('Creating stores with mixins', function () {
     describe('with one simple mixin', function () {

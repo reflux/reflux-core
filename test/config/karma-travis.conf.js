@@ -14,6 +14,7 @@ module.exports = function(config) {
         ],
 
         files: [
+            '../../node_modules/babel-polyfill/dist/polyfill.js',
             '../shims/phantomjs-shims.js',
             '../*.spec.js'
         ],
@@ -24,7 +25,8 @@ module.exports = function(config) {
         },
 
         browserify: {
-            debug: true
+            debug: true,
+            transform: ['babelify']
         },
 
         sauceLabs: {

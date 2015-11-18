@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import sinon from 'sinon';
-import { default as Reflux } from '../src';
+import Reflux from '../src';
 
 describe('add plugins with use function', function() {
 
