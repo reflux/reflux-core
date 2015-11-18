@@ -16,9 +16,9 @@
     "watch:lint": "esw -w",
     "watch:test": "mocha -w -R min --compilers js:babel-core/register ./test",
     "watch": "parallelshell 'npm run watch:test' 'npm run watch:lint'",
-    "prepublish": "npm run lint && npm run clean && npm run compile && npm run test:mocha",
-    "precommit": "npm run prepublish",
-    "prepush": "npm run prepublish"
+    "prepublish": "npm run lint && npm run test:mocha && npm run clean && npm run compile",
+    "precommit": "npm run lint && npm run test:mocha",
+    "prepush": "npm run precommit"
   },
   "author": "Mikael Brassman",
   "license": "BSD-3-Clause",
