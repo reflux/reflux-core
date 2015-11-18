@@ -1,9 +1,9 @@
-var assert = require('chai').assert,
-    Reflux = require('../lib'),
-    Action = Reflux.createAction,
-    Store = Reflux.createStore,
-    fn = function(){},
-    sinon = require('sinon');
+import { assert } from 'chai';
+import sinon from 'sinon';
+import Store from '../src/createStore';
+import Action from '../src/createAction';
+
+var fn = function(){};
 
 describe('Stopping',function(){
     describe('listening to a publisher that\'s only part of a join',function(){

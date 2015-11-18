@@ -1,11 +1,12 @@
-var chai = require('chai'),
-    assert = chai.assert,
-    Reflux = require('../lib'),
-    _ = require('../lib/utils'),
-    Q = require('q'),
-    sinon = require('sinon');
+var _ = require('../src/utils');
 
-chai.use(require('chai-as-promised'));
+import Q from 'q';
+import chai, { assert } from 'chai';
+import asPromised from 'chai-as-promised';
+import sinon from 'sinon';
+import { default as Reflux } from '../src';
+
+chai.use(asPromised);
 
 describe('Creating stores', function() {
 

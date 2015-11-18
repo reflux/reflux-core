@@ -1,9 +1,9 @@
-var chai = require('chai'),
-    assert = chai.assert,
-    Reflux = require('../lib'),
-    internalUtils = require('../lib/utils');
+import chai, { assert } from 'chai';
+import asPromised from 'chai-as-promised';
+import { default as Reflux } from '../src';
+import * as internalUtils from '../src/utils';
 
-chai.use(require('chai-as-promised'));
+chai.use(asPromised);
 
 describe('Export internal EventEmitter', function() {
     it('should be the original', function() {

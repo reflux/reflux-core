@@ -1,9 +1,9 @@
-var chai = require('chai'),
-    assert = chai.assert,
-    Reflux = require('../lib'),
-    sinon = require('sinon');
+import chai, { assert } from 'chai';
+import asPromised from 'chai-as-promised';
+import sinon from 'sinon';
+import { default as Reflux } from '../src';
 
-chai.use(require('chai-as-promised'));
+chai.use(asPromised);
 
 describe("using the publisher methods mixin",function(){
     var pub = Reflux.PublisherMethods;

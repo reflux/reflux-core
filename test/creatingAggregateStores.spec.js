@@ -1,9 +1,9 @@
-var chai = require('chai'),
-    assert = chai.assert,
-    Reflux = require('../lib'),
-    Q = require('q');
+import Q from 'q';
+import chai, { assert } from 'chai';
+import asPromised from 'chai-as-promised';
+import { default as Reflux } from '../src';
 
-chai.use(require('chai-as-promised'));
+chai.use(asPromised);
 
 var slice = Array.prototype.slice;
 

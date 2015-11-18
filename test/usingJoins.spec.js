@@ -1,6 +1,6 @@
-var assert = require('chai').assert,
-    Reflux = require('../lib'),
-    sinon = require('sinon');
+import { assert } from 'chai';
+import sinon from 'sinon';
+import { default as Reflux } from '../src';
 
 describe('using joins',function(){
     describe('with static methods',function(){

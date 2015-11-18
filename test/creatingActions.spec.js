@@ -1,10 +1,10 @@
-var chai = require('chai'),
-    assert = chai.assert,
-    Reflux = require('../lib'),
-    Q = require('q'),
-    sinon = require('sinon');
+import Q from 'q';
+import chai, { assert } from 'chai';
+import asPromised from 'chai-as-promised';
+import sinon from 'sinon';
+import { default as Reflux } from '../src';
 
-chai.use(require('chai-as-promised'));
+chai.use(asPromised);
 
 describe('Creating action', function() {
 

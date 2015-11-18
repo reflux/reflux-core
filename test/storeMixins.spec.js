@@ -1,7 +1,6 @@
-var chai = require('chai'),
-    assert = chai.assert,
-    Reflux = require('../lib'),
-    sinon = require('sinon');
+import { assert } from 'chai';
+import sinon from 'sinon';
+import { default as Reflux } from '../src';
 
 describe('Creating stores with mixins', function () {
     describe('with one simple mixin', function () {
