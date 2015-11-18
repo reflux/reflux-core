@@ -18,6 +18,7 @@ import * as _ from "./utils";
 const utils = _;
 import createAction from "./createAction";
 import createStore from "./createStore";
+import createReducer from "./createReducer";
 
 /**
  * Convenience function for creating a set of actions
@@ -83,6 +84,7 @@ export default {
     utils,
     createAction,
     createStore,
+    createReducer,
     createActions,
     setEventEmitter,
     nextTick,

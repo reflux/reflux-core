@@ -15,7 +15,7 @@
     "benchmark": "node test/benchmarks",
     "watch:lint": "esw -w",
     "watch:test": "mocha -w -R min --compilers js:babel-core/register ./test",
-    "watch": "parallelshell 'npm run watch:test' 'npm run watch:lint'",
+    "watch": "parallelshell 'npm run watch:lint' 'npm run watch:test'",
     "prepublish": "npm run lint && npm run test:mocha && npm run clean && npm run compile",
     "precommit": "npm run lint && npm run test:mocha",
     "prepush": "npm run precommit"
