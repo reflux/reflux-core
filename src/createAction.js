@@ -52,7 +52,7 @@ export default function createAction(definition) {
         _isAction: true
     }, PublisherMethods, ActionMethods, definition);
 
-    var functor = function() {
+    var functor = function _functor () {
         var triggerType = functor.sync ? "trigger" : "triggerAsync";
         return functor[triggerType].apply(functor, arguments);
     };
