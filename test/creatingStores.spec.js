@@ -130,6 +130,39 @@ describe('Creating stores', function() {
         });
     });
 
+    describe('with one store listening to a child action', function() {
+        var childAction,
+            store,
+            promise;
+
+        beforeEach(function() {
+            promise = Q.Promise(function(resolve) {
+                childAction = Reflux.createAction({ children: ['kid'] }).kid;
+                store = Reflux.createStore({
+                    childActionCalled: function() {
+                        var args = Array.prototype.slice.call(arguments, 0);
+                        this.trigger(args);
+                        resolve(args);
+                    }
+                });
+                store.listenTo(childAction, store.childActionCalled);
+            });
+        });
+
+        it('should get argument given on child action', function() {
+            childAction('my argument');
+
+            return assert.eventually.equal(promise, 'my argument');
+        });
+
+        it('should get any arbitrary arguments given on child action', function() {
+            childAction(1337, 'ninja');
+
+            return assert.eventually.deepEqual(promise, [1337, 'ninja']);
+        });
+
+    });
+
     describe('with one store listening to another store', function() {
         var action,
             baseDefinition;
