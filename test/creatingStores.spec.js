@@ -331,6 +331,25 @@ describe('Creating stores', function() {
         assert.isUndefined(Reflux.ListenerMethods.trigger);
     });
 
+    it("should allow composed listeners to be registered before simple listeners",function(){
+
+        var testAction1 = Reflux.createAction();
+        var testAction2 = Reflux.createAction();
+        var noop = function() {};
+
+        assert.doesNotThrow(function() {
+            Reflux.createStore({
+                init: function() {
+                    var join = Reflux.all(testAction1, testAction2);
+                    this.listenTo(join, noop);
+                    // If there were something wrong, this would throw...
+                    this.listenTo(testAction2, noop);
+                }
+            });
+        });
+
+    });
+
     describe('store methods', function() {
         var initReflect,
             store = Reflux.createStore({
