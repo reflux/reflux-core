@@ -30,6 +30,28 @@ Creates an event emitting Data Store. It is mixed in with functions from the `Li
 
 @returns {Store} A data store instance
 
+## Reflux.createReducer(initialData)
+
+Creates a reducer, a data store that uses pure functions to mutate the data.
+
+@param {Mixed} initialData the initial data to seed the reducer
+
+@returns {Reducer} A reducer instance
+
+@example
+```javascript
+var addUser = Reflux.createAction({ sync: true });
+var reducer = Reflux.createReducer({ users: [] });
+
+reducer.on(addUser, function(data, newUser) {
+  data.users.push(newUser);
+  return data;
+})
+
+addUser("John Doe");
+reducer.peek(); // outputs { users: ["John Doe"] }
+```
+
 ## Reflux.joinTrailing(...publishers)
 
 Creates a static join for the given publishers. It emits when all the publishers have emitted at least once, and will emit with the data that was last emitted by each listenable.
