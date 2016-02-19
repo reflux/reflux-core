@@ -36,7 +36,7 @@ export default function createAction(definition) {
     }
 
     definition.children = definition.children || [];
-    if (definition.asyncResult){
+    if (definition.asyncResult || definition.asyncCall){
         definition.children = definition.children.concat(["completed", "failed"]);
     }
 
@@ -52,6 +52,14 @@ export default function createAction(definition) {
         _isAction: true
     }, PublisherMethods, ActionMethods, definition);
 
+
+    if(definition.asyncCall){
+        context.listen( (argument) => {
+            definition.asyncCall(argument)
+                .then(definition.children.completed)
+                .catch(definition.children.failed);
+        });
+    }
     var functor = function() {
         var triggerType = functor.sync ? "trigger" : "triggerAsync";
         return functor[triggerType].apply(functor, arguments);
