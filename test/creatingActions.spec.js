@@ -51,7 +51,7 @@ describe('Creating action', function() {
         });
     });
 
-    it.only("should create action with the parameter asyncCall",function(done){
+    it("should create action with the parameter asyncCall",function(done){
         let doLogin = () => {
             done();
         };
