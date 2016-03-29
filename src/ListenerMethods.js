@@ -119,9 +119,10 @@ export default {
         this.fetchInitialState(listenable, defaultCallback);
         desub = listenable.listen(this[callback] || callback, this);
         unsubscriber = function(listenerSubs) {
-            var index = listenerSubs.indexOf(subscriptionobj);
+            var currentSubs = listenerSubs ? listenerSubs : subs;
+            var index = currentSubs.indexOf(subscriptionobj);
             _.throwIf(index === -1, "Tried to remove listen already gone from subscriptions list!");
-            listenerSubs.splice(index, 1);
+            currentSubs.splice(index, 1);
             desub();
         };
         subscriptionobj = {
