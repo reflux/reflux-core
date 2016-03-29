@@ -118,10 +118,11 @@ export default {
         _.throwIf(this.validateListening(listenable));
         this.fetchInitialState(listenable, defaultCallback);
         desub = listenable.listen(this[callback] || callback, this);
-        unsubscriber = function() {
-            var index = subs.indexOf(subscriptionobj);
+        unsubscriber = function(listenerSubs) {
+            var currentSubs = listenerSubs ? listenerSubs : subs;
+            var index = currentSubs.indexOf(subscriptionobj);
             _.throwIf(index === -1, "Tried to remove listen already gone from subscriptions list!");
-            subs.splice(index, 1);
+            currentSubs.splice(index, 1);
             desub();
         };
         subscriptionobj = {
@@ -143,7 +144,7 @@ export default {
         for(;i < subs.length; i++){
             sub = subs[i];
             if (sub.listenable === listenable){
-                sub.stop();
+                sub.stop(subs);
                 _.throwIf(subs.indexOf(sub) !== -1, "Failed to remove listen from subscriptions list!");
                 return true;
             }
@@ -157,7 +158,7 @@ export default {
     stopListeningToAll: function(){
         var remaining, subs = this.subscriptions || [];
         while((remaining = subs.length)){
-            subs[0].stop();
+            subs[0].stop(subs);
             _.throwIf(subs.length !== remaining - 1, "Failed to remove listen from subscriptions list!");
         }
     },
