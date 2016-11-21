@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import sinon from 'sinon';
-import Store from '../src/createStore';
-import Action from '../src/createAction';
+import {createStore as Store} from '../src/createStore';
+import {createAction as Action} from '../src/createAction';
 
 var fn = function(){};
 

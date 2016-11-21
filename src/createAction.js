@@ -1,7 +1,7 @@
 import * as _ from "./utils";
-import ActionMethods from "./ActionMethods";
-import PublisherMethods from "./PublisherMethods";
-import Keep from "./Keep";
+import * as ActionMethods from "./ActionMethods";
+import * as PublisherMethods from "./PublisherMethods";
+import * as Keep from "./Keep";
 
 var allowed = { preEmit: 1, shouldEmit: 1 };
 
@@ -12,7 +12,7 @@ var allowed = { preEmit: 1, shouldEmit: 1 };
  *
  * @param {Object} definition The action object definition
  */
-export default function createAction(definition) {
+export function createAction(definition) {
 
     definition = definition || {};
     if (!_.isObject(definition)){

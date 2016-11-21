@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import sinon from 'sinon';
-import { default as Reflux } from '../src';
+import * as Reflux from '../src';
 
 describe('using deferWith function', function() {
 

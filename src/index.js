@@ -2,10 +2,10 @@ const version = {
     "reflux-core": "@VERSION"
 };
 
-import ActionMethods from "./ActionMethods";
-import ListenerMethods from "./ListenerMethods";
-import PublisherMethods from "./PublisherMethods";
-import StoreMethods from "./StoreMethods";
+import * as ActionMethods from "./ActionMethods";
+import * as ListenerMethods from "./ListenerMethods";
+import * as PublisherMethods from "./PublisherMethods";
+import * as StoreMethods from "./StoreMethods";
 
 import { staticJoinCreator as maker} from "./joins";
 const joinTrailing = maker("last");
@@ -16,8 +16,8 @@ const joinConcat = maker("all");
 
 import * as _ from "./utils";
 const utils = _;
-import createAction from "./createAction";
-import createStore from "./createStore";
+import {createAction} from "./createAction";
+import {createStore} from "./createStore";
 
 /**
  * Convenience function for creating a set of actions
@@ -72,9 +72,9 @@ function use (pluginCb) {
  * Provides the set of created actions and stores for introspection
  */
 /*eslint-disable no-underscore-dangle*/
-import __keep from "./Keep";
+import * as __keep from "./Keep";
 
-export default {
+export {
     version,
     ActionMethods,
     ListenerMethods,

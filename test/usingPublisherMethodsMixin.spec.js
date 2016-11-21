@@ -1,7 +1,7 @@
 import chai, { assert } from 'chai';
 import asPromised from 'chai-as-promised';
 import sinon from 'sinon';
-import Reflux from '../src';
+import * as Reflux from '../src';
 
 chai.use(asPromised);
 

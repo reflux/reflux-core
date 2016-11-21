@@ -1,10 +1,10 @@
 import * as _ from "./utils";
-import Keep from "./Keep";
-import mixer from "./mixer";
-import { bindMethods } from "./bindMethods";
-import { default as StoreMethods } from "./StoreMethods";
-import { default as PublisherMethods } from "./PublisherMethods";
-import { default as ListenerMethods } from "./ListenerMethods";
+import * as Keep from "./Keep";
+import {mix as mixer} from "./mixer";
+import {bindMethods} from "./bindMethods";
+import * as StoreMethods from "./StoreMethods";
+import * as PublisherMethods from "./PublisherMethods";
+import * as ListenerMethods from "./ListenerMethods";
 
 var allowed = { preEmit: 1, shouldEmit: 1 };
 
@@ -16,7 +16,7 @@ var allowed = { preEmit: 1, shouldEmit: 1 };
  * @param {Object} definition The data store object definition
  * @returns {Store} A data store instance
  */
-export default function createStore(definition) {
+export function createStore(definition) {
 
     definition = definition || {};
 
