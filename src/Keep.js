@@ -1,10 +1,14 @@
 
-// this needs to be set to true before Keep.js starts storing
+// this needs to be set to true before Keep.js starts storing, done via useKeep
 var use = false;
 
 const createdStores = [];
 
 const createdActions = [];
+
+function useKeep(bool = true) {
+	use = bool;
+}
 
 function addStore(str) {
 	if (use) {
@@ -27,4 +31,4 @@ function reset() {
     }
 }
 
-export default { use, addStore, addAction, createdStores, createdActions, reset };
+export default { useKeep, addStore, addAction, createdStores, createdActions, reset };
