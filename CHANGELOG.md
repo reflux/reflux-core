@@ -2,6 +2,10 @@
 
 Check for latest changes on the [milestones page](https://github.com/reflux/refluxjs/milestones).
 
+## v0.4.0
+
+* In order for Keep.js to actually store actions/stores you must call `Reflux.__keep.useKeep()`
+
 ## v0.3.0
 
 Breaking changes!
