@@ -1,6 +1,6 @@
 import * as _ from "./utils";
 
-export default function mix(def) {
+export function mix(def) {
     var composed = {
         init: [],
         preEmit: [],

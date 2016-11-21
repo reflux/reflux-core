@@ -2,7 +2,7 @@
  * Internal module used to create static and instance join methods
  */
 
-import createStore from "./createStore";
+import {createStore} from "./createStore";
 import * as _ from "./utils";
 
 var slice = Array.prototype.slice,

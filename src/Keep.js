@@ -31,4 +31,4 @@ function reset() {
     }
 }
 
-export default { useKeep, addStore, addAction, createdStores, createdActions, reset };
+export { useKeep, addStore, addAction, createdStores, createdActions, reset };

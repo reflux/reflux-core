@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { default as Reflux } from '../src';
+import * as Reflux from '../src';
 
 describe('with the keep reset', function() {
     beforeEach(function () {

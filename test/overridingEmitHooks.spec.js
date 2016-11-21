@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import sinon from 'sinon';
-import Reflux from '../src';
+import * as Reflux from '../src';
 
 describe("overriding preEmit",function(){
     describe("for lone action",function(){
