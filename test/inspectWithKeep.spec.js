@@ -1,8 +1,9 @@
 import { assert } from 'chai';
 import { default as Reflux } from '../src';
 
-describe('with the keep reset', function() {
+describe('with the keep reset and keep use to true', function() {
     beforeEach(function () {
+		Reflux.__keep.use = true;
         Reflux.__keep.reset();
     });
 

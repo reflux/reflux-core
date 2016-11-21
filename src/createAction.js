@@ -59,7 +59,7 @@ export default function createAction(definition) {
 
     _.extend(functor, childActions, context);
 
-    Keep.createdActions.push(functor);
+    Keep.addAction(functor);
 
     return functor;
 
