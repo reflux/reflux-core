@@ -2,9 +2,13 @@
 
 Check for latest changes on the [milestones page](https://github.com/reflux/refluxjs/milestones).
 
+## v0.4.1
+
+* Fixes exporting differences that grew between v0.3.0 and v0.4.0 and prevent refluxjs from actually using reflux-core.
+
 ## v0.4.0
 
-* In order for Keep.js to actually store actions/stores you must call `Reflux.__keep.useKeep()`
+* In order for Keep.js to actually store actions/stores you must call `Reflux.__keep.useKeep()` - [deprecated in favor of v0.4.1]
 
 ## v0.3.0
 
