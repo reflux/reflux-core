@@ -2,6 +2,10 @@
 
 Check for latest changes on the [milestones page](https://github.com/reflux/refluxjs/milestones).
 
+## v0.4.2
+
+* Allows both `var Reflux = require('reflux-core')` and `import Reflux from 'reflux-core'` style importing even though they return different results.
+
 ## v0.4.1
 
 * Fixes exporting differences that grew between v0.3.0 and v0.4.0 and prevent refluxjs from actually using reflux-core.
