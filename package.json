@@ -1,6 +1,6 @@
 {
   "name": "reflux-core",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A simple library for uni-directional dataflow application architecture inspired by ReactJS Flux",
   "main": "lib/index.js",
   "scripts": {

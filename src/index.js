@@ -74,6 +74,7 @@ function use (pluginCb) {
 /*eslint-disable no-underscore-dangle*/
 import * as __keep from "./Keep";
 
+// export in format that supports syntax: var Reflux = require('reflux-core');
 export {
     version,
     ActionMethods,
@@ -95,6 +96,13 @@ export {
     __keep
 };
 /*eslint-enable no-underscore-dangle*/
+
+// export in format that supports syntax: import Reflux from 'reflux-core';
+Object.defineProperty(exports, "default", {
+	get: function() {
+		return exports;
+	}
+});
 
 /**
  * Warn if Function.prototype.bind not available
