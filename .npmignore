@@ -3,3 +3,4 @@ test/
 tmp/
 src/
 scripts/
+.babelrc
