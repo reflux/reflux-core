@@ -2,6 +2,10 @@
 
 Check for latest changes on the [milestones page](https://github.com/reflux/refluxjs/milestones).
 
+## v0.4.3
+
+* Ignore the babelrc file when publishing to npm.
+
 ## v0.4.2
 
 * Allows both `var Reflux = require('reflux-core')` and `import Reflux from 'reflux-core'` style importing even though they return different results.
