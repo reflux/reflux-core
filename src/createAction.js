@@ -42,8 +42,9 @@ export function createAction(definition) {
 
     var i = 0, childActions = {};
     for (; i < definition.children.length; i++) {
-        var name = definition.children[i];
-        childActions[name] = createAction(name);
+        var chDef = definition.children[i];
+		var chName = typeof chDef === "string" ? chDef : chDef.actionName;
+        childActions[chName] = createAction(chDef);
     }
 
     var context = _.extend({
@@ -53,7 +54,11 @@ export function createAction(definition) {
     }, PublisherMethods, ActionMethods, definition);
 
     var functor = function() {
-        var triggerType = functor.sync ? "trigger" : "triggerAsync";
+		var hasChildActions = false;
+		/* eslint no-unused-vars:0 */
+		for (var ignore in functor.childActions) { hasChildActions = true; break; }
+		var async = (!functor.sync && typeof functor.sync !== "undefined") || hasChildActions;
+        var triggerType = async ? "triggerAsync" : "trigger";
         return functor[triggerType].apply(functor, arguments);
     };
 

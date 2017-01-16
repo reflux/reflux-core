@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.0
+
+* Breaking change: actions are now sync by default unless they involve child actions.
+* Child actions can now have complex definitions instead of only string action names.
+
 Check for latest changes on the [milestones page](https://github.com/reflux/refluxjs/milestones).
 
 ## v0.4.3

@@ -34,6 +34,18 @@ describe('Creating action', function() {
 
     });
 
+	it("should allow complex child action definitions",function(){
+        var def = {children: [{actionName:"foo"},{actionName:"BAR"}]},
+            action = Reflux.createAction(def);
+
+		assert.equal(action.foo.actionName, "foo");
+        assert.equal(action.foo._isAction, true);
+        assert.deepEqual(action.foo.children, []);
+		assert.equal(action.BAR.actionName, "BAR");
+        assert.equal(action.BAR._isAction, true);
+
+    });
+
     it("should create completed and failed child actions for async actions",function(){
         var def = {asyncResult: true, sync: true},
             action = Reflux.createAction(def);
@@ -91,8 +103,8 @@ describe('Creating action', function() {
     });
 
     describe("the synchronisity",function(){
-        var syncaction = Reflux.createAction({sync:true}),
-            asyncaction = Reflux.createAction(),
+        var syncaction = Reflux.createAction(),
+            asyncaction = Reflux.createAction({sync:false}),
             synccalled = false,
             asynccalled = false,
             store = Reflux.createStore({
@@ -101,17 +113,17 @@ describe('Creating action', function() {
             });
         store.listenTo(syncaction,"sync");
         store.listenTo(asyncaction,"async");
-        it("should be asynchronous when not specified",function(){
-            asyncaction();
-            assert.equal(false,asynccalled);
-        });
-        it("should be synchronous if requested",function(){
+        it("should be synchronous when not specified",function(){
             syncaction();
             assert.equal(true,synccalled);
         });
+        it("should be asynchronous if requested",function(){
+            asyncaction();
+			assert.equal(false,asynccalled);
+        });
         describe("when changed during lifetime",function(){
-            var syncaction = Reflux.createAction({sync:true}),
-            asyncaction = Reflux.createAction(),
+            var syncaction = Reflux.createAction(),
+            asyncaction = Reflux.createAction({sync:false}),
             synccalled = false,
             asynccalled = false,
             store = Reflux.createStore({
