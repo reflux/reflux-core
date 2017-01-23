@@ -63,6 +63,13 @@ describe('Creating action', function() {
         });
     });
 
+    it("should create action with the parameter asyncCall",function(done){
+        let doLogin = () => {
+            done();
+        };
+        let actions = Reflux.createActions({login: {asyncCall: doLogin }});
+        actions.login();
+    });
     describe('Reflux.ActionMethods', function() {
 
         afterEach(function(){
